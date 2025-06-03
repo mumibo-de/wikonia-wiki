@@ -1,0 +1,105 @@
+# ============
+# Wikonia .gitignore
+# ============
+
+# 0. Niemals auf GitHub: Secrets
+secrets.*
+!secrets.dev.template
+
+# 1. MediaWiki Core, den wir nicht unnötig auf GitHub pumpen
+includes/
+maintenance/
+mw-config/
+resources/
+serialized/
+languages/
+wiki.phtml
+autoload.php
+index.php
+load.php
+*.json
+thumb*
+api.php
+img_auth*
+rest.php
+
+StartProfiler.php
+docs/
+vendor/
+tests/
+
+# 2. Beispiel- oder Setup-Dateien von MediaWiki
+*.sample
+*-sample
+*.orig
+composer.json
+composer.lock
+RELEASE-NOTES*
+UPGRADE*
+CODE_OF_CONDUCT.md
+CREDITS
+COPYING
+INSTALL
+HISTORY
+FAQ
+README.md
+readme.html
+
+# 3. Extensions (außer eigene)
+extensions/*
+!extensions/WikoniaExtension/
+
+# 4. Skins (außer eigener)
+skins/*
+!skins/WikoniaSkin/
+
+# 5. Lokale Dateien und Editoren
+.vscode/
+.idea/
+*.log
+*.bak
+*.tmp
+.cache/
+*.swp
+.DS_Store
+Thumbs.db
+
+# 6. Git-Altlasten und Readme aus Extensions
+**/.git
+**/README.md
+!/README.md
+!/wikonia-assets/**/*.md
+
+# 7. Docker (nur lokal für Dev)
+docker-compose.yml
+docker-compose.overide.yml
+Dockerfile
+.env
+
+# 8. Backup-Dateien oder temporäre Scripts
+*.old
+*.backup
+*.zip
+*.tar.gz
+dump.sql
+*.7z
+*.swp
+*.swo
+*.tmp
+*.bak~
+
+# 9. System-/Projektübergreifend
+node_modules/
+tmp/
+cache/
+/images
+/vendor/
+/composer.lock
+
+
+
+# 10. LocalSettings, vor der Git-Versionierung
+LocalSettings.php-*
+LocalSettings.php.save*
+LocalSettings.php.bak*
+
