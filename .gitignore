@@ -4,7 +4,7 @@
 
 # 0. Niemals auf GitHub: Secrets
 secrets.*
-!secrets.dev.template
+!secrets.dev.template.php
 
 # 1. MediaWiki Core, den wir nicht unnötig auf GitHub pumpen
 includes/
