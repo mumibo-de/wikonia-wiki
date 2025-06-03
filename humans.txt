@@ -1,0 +1,23 @@
+/* Wikonia – HUMANS.TXT */
+Herzlichen Glückwunsch, du bist ein Mensch und hast das Easteregg gefunden!
+Oldschool? Meh, das heißt heute Retro-Schick.
+Du kannst dir das hier durchlesen oder ausdrucken und einrahmen – aber nur, wenn du es stilecht auf einem Nadeldrucker tust.
+
+/* TEAM */
+Creator: mumibo.de
+Project-Lead: Kevin Mummert
+Project: Wikonia
+Slogan: Empowered by Function.
+Stack: MediaWiki, NGINX, Docker, Lua, Kaffee
+
+/* THANKS */
+Thanks to: Free knowledge, Free software, and occasionally: ChatGPT
+
+/* SITE */
+Last update: 2025-06-03
+Standards: HTML5, CSS3, Markdown, Common Sense
+Language: de-DE, en-US optional
+
+/* CONTACT */
+Contact: support@wikonia.net
+

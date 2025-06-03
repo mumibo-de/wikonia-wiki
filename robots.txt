@@ -1,0 +1,29 @@
+# robots.txt für Wikonia Wiki (MediaWiki mit Short URLs im Root)
+
+User-agent: *
+# Bearbeitungsseiten und Vergleichsansichten ausschließen
+Disallow: /*action=edit
+Disallow: /*action=submit
+Disallow: /*diff=
+Disallow: /*oldid=
+
+# Interne Namensräume
+Disallow: /Team:
+Disallow: /Team_Diskussion:
+Disallow: /Intern:
+Disallow: /Intern_Diskussion:
+Disallow: /PortalIntern:
+Disallow: /PortalIntern_Diskussion:
+
+# Benutzerseiten
+Disallow: /Benutzer:
+Disallow: /Benutzer_Diskussion:
+
+# Spezialseiten (Special:) –  irrelevant
+Disallow: /Spezial:
+
+# Optional: Suchseite unterbinden (spart Crawling-Ressourcen)
+Disallow: /Suche
+
+# Sitemap (sobald verfügbar)
+# Sitemap: https://wiki.wikonia.net/sitemap.xml
