@@ -5,6 +5,13 @@
 # Git-Tag: v0.1
 # -----------------------------
 
+/** Debugging
+ * Diese Einstellungen sind nur für die Entwicklungsumgebung gedacht.
+ * In der Produktionsumgebung sollten sie deaktiviert sein,
+ */
+## error_reporting(E_ALL);
+## ini_set("display_errors", 1);
+
 
 /** Schutzmechanismen und Universalisierung der LocalSettings
  * Diese Datei ist die zentrale Konfigurationsdatei für das Produduktiv-Wiki.
@@ -130,18 +137,7 @@ $wgDBTableOptions = "ENGINE=InnoDB, DEFAULT CHARSET=binary";
 $wgSharedTables[] = "actor";  // Zur Zeit noch nicht implementiert, aber für zukünftige Erweiterungen gedacht.
 
 $wgSecretKey = $mySecrets['SecretKey']; // Ein geheimer Schlüssel, der für die Verschlüsselung und Sicherheit des Wikis verwendet wird. Muss in der secrets.php definiert sein.
-$wgUpgradeKey = $mySecrets['UpgradeKey'];  // Ein Schlüssel, der für die Aktualisierung des Wikis verwendet wird. Muss in der secrets.php definiert sein.
-
-
-/** Caching Einstellungen
- * Diese Einstellungen steuern das Caching von Inhalten, um die Leistung des Wikis zu verbessern.
- * Sie sollten an die Serverumgebung und die Anforderungen des Wikis angepasst werden.
- */
-
-$wgMainCacheType = CACHE_ACCEL;   // Der Hauptcache-Typ, der für die Speicherung von Seiteninhalten verwendet wird.
-$wgMemCachedServers = [];   // Liste von Memcached-Servern, die für das Caching verwendet werden können. Hier leer, da kein Memcached verwendet wird.
-
-#$wgCacheDirectory = "$IP/cache"; // Verzeichnis für den Cache. Hier auskommentiert, da kein lokaler Cache verwendet wird.
+#$wgUpgradeKey = $mySecrets['UpgradeKey'];  // Ein Schlüssel, der für die Aktualisierung des Wikis verwendet wird. Muss in der secrets.php definiert sein.
 
 /** Dateisystem Einstellungen
  * Diese Einstellungen steuern, wo Mediendateien (Bilder, Videos, etc.) gespeichert werden.
@@ -156,6 +152,16 @@ $wgUseInstantCommons = true; // Ermöglicht die Verwendung von Bildern aus Wikim
 
 # Changing this will log out all existing sessions.
 $wgAuthenticationTokenVersion = "1";
+
+/** Caching Einstellungen
+ * Diese Einstellungen steuern das Caching von Inhalten, um die Leistung des Wikis zu verbessern.
+ * Sie sollten an die Serverumgebung und die Anforderungen des Wikis angepasst werden.
+ */
+
+$wgMainCacheType = CACHE_ACCEL;   // Der Hauptcache-Typ, der für die Speicherung von Seiteninhalten verwendet wird.
+$wgMemCachedServers = [];   // Liste von Memcached-Servern, die für das Caching verwendet werden können. Hier leer, da kein Memcached verwendet wird.
+
+#$wgCacheDirectory = "$IP/cache"; // Verzeichnis für den Cache. Hier auskommentiert, da kein lokaler Cache verwendet wird.
 
 /** Rechte und Lizenzen
  * Diese Einstellungen steuern die Rechte und Lizenzen für die Inhalte des Wikis.
@@ -325,7 +331,6 @@ $wgNamespaceAliases += [
     'H' 	=> NS_HELP,
 	'K' 	=> NS_CATEGORY,
     'V' 	=> NS_TEMPLATE,
-    'M' 	=> NS_MODULE,
 	
 	'PL' 	=> NS_PROBLEME,
     
