@@ -103,8 +103,25 @@ $wgLogos = [
  * Diese Einstellungen steuern die E-Mail-Benachrichtigungen und die Kommunikation zwischen Benutzern.
  */
 
-$wgEmergencyContact = "no-reply@wikonia.net";  // E-Mail-Adresse, an die Notfallbenachrichtigungen gesendet werden.
+$wgEmergencyContact = "admin@wikonia.net";  // E-Mail-Adresse, an die Notfallbenachrichtigungen gesendet werden.
 $wgPasswordSender = "no-reply@wikonia.net";   // E-Mail-Adresse, die als Absender für Passwort- und Benachrichtigungs-E-Mails verwendet wird.
+
+# Absenderadresse (sichtbar für Empfänger)
+$wgPasswordSender = $mySecrets['smtp_user']; // E-Mail-Adresse die zum Versand benutzt wird.
+$wgPasswordSenderName = "Wikonia System";
+
+
+# SMTP-Konfiguration (Mailcow)
+$wgSMTP = [
+    'host'     => 'mail.wikonia.net',     // oder interner Hostname
+    'IDHost'   => 'wikonia.net',          // wird als HELO gesendet
+    'port'     => 587,
+    'auth'     => true,
+    'username' => $mySecrets['smtp_user'], // E-Mail-Adresse des Postfachs 
+    'password' => $mySecrets['smtp_pass'], // Passwort für das Postfach
+    'secure'   => 'tls',                  // STARTTLS
+];
+
 
 $wgEnableEmail = true;        // Ermöglicht das Senden und Empfangen von E-Mails über das Wiki.   
 $wgEnableUserEmail = true;    // Ermöglicht Benutzern, E-Mails an andere Benutzer zu senden.
