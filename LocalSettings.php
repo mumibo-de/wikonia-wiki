@@ -6,13 +6,33 @@
 # -----------------------------
 
 
-# Protect against web entry
+/** Schutzmechanismen und Universalisierung der LocalSettings
+ * Diese Datei ist die zentrale Konfigurationsdatei für das Produduktiv-Wiki.
+ * Sie wird von MediaWiki automatisch geladen, wenn die Seite aufgerufen wird.
+ */
+
+ /* Verhinderung des direkten Aufrufs dieser Datei */
 if ( !defined( 'MEDIAWIKI' ) ) {
 	exit;
 }
 
 
-## Einbinden der Secret-Datei (nicht fürs Repo-bestimmt) ##
+/** Einbinden der richtigen Secrets und Univeralisierung
+ * Die Konfiguration der Datenbank und anderer
+ * sicherheitsrelevanter Einstellungen wird in einer separaten Datei
+ * gespeichert, die je nach Umgebung (Entwicklung, Staging, Produktion)
+ * unterschiedliche Werte enthält. 
+ * 
+ * Die Datei muss im gleichen Verzeichnis wie diese LocalSettings.php liegen
+ * und den Namen "secrets.{env}.php" haben, wobei {env} die Umgebung ist.
+ * 
+ * Zum Beispiel: secrets.dev.php, secrets.staging.php, secrets.prod.php.
+ * Die Secrets-Datei enthält ein Array mit den Konfigurationswerten,
+ * das in der Variable $mySecrets gespeichert wird.
+ * 
+ * Diese Datei sollte nicht im Quellcode-Repository gespeichert werden,
+ * sondern nur auf dem Server vorhanden sein, um die Sicherheit zu gewährleisten.
+ */
 
 $host = $_SERVER['HTTP_HOST'];
 $env = null;
@@ -42,127 +62,132 @@ require_once $secretFile;
 
 
 
+/** Allgemeine Konfiguration
+ * Diese Einstellungen sind für die grundlegende Funktionalität und das Aussehen des Wikis verantwortlich.
+ * Sie sollten an die Bedürfnisse des Wikis angepasst werden.
+ */
 
-## Uncomment this to disable output compression
-# $wgDisableOutputCompression = true;
+$wgSitename = "Wikonia";  // Der Name des Wikis, der auf der Hauptseite und in der Kopfzeile angezeigt wird.
 
-$wgSitename = "Wikonia";
+$wgScriptPath = ""; // Der Pfad zum Wiki-Skript, relativ zur Domain.
 
-## The URL base path to the directory containing the wiki;
-## defaults for all runtime URL paths are based off of this.
-## For more information on customizing the URLs
-## (like /w/index.php/Page_title to /wiki/Page_title) please see:
-## https://www.mediawiki.org/wiki/Manual:Short_URL
-$wgScriptPath = "";
+$wgServer = "https://wiki.wikonia.net"; // Die Basis-URL des Wikis, die für Links und Weiterleitungen verwendet wird.
 
-## The protocol and server name to use in fully-qualified URLs
-$wgServer = "https://wiki.wikonia.net";
+$wgResourceBasePath = $wgScriptPath;  // Der Basis-Pfad für Ressourcen wie CSS, JavaScript und Bilder. Normalerweise gleich $wgScriptPath.
 
-## The URL path to static resources (images, scripts, etc.)
-$wgResourceBasePath = $wgScriptPath;
+$wgPingback = true; // Ermöglicht das Senden von Pingbacks, wenn Seiten verlinkt werden.
 
-## The URL paths to the logo.  Make sure you change this from the default,
-## or else you'll overwrite your logo when you upgrade!
+$wgLanguageCode = "de"; // Die Standardsprache des Wikis. Hier auf Deutsch gesetzt.
+
+$wgLocaltimezone = "UTC"; // Zeitzone des Wikis, die für die Anzeige von Datums- und Zeitangaben verwendet wird. Hier auf UTC gesetzt.
+
+$wgDiff3 = "/usr/bin/diff3"; // Setzen des Pfads zur diff3-Anwendung, die für die Konfliktauflösung verwendet wird. Muss auf dem Server installiert sein.
+
+/* Branding */
 $wgLogos = [
-	'1x' => "$wgResourceBasePath/resources/assets/change-your-logo.svg",
-	'icon' => "$wgResourceBasePath/resources/assets/change-your-logo.svg",
+	'1x' => "$wgResourceBasePath/resources/assets/change-your-logo.svg", // Logo in 1x Auflösung
+  #'1.5x' => "$wgResourceBasePath/resources/assets/change-your-logo.svg", // Logo in 1.5x Auflösung
+	'icon' => "$wgResourceBasePath/resources/assets/change-your-logo.svg", // Icon für Browser-Tabs und Lesezeichen
+  #'wordmark' => "$wgResourceBasePath/resources/assets/change-your-logo.svg", // Wortmarke, die im Logo verwendet wird
+
 ];
 
-## UPO means: this is also a user preference option
+/** E-Mail und Benachrichtungeinstellungen
+ * Diese Einstellungen steuern die E-Mail-Benachrichtigungen und die Kommunikation zwischen Benutzern.
+ */
 
-$wgEnableEmail = true;
-$wgEnableUserEmail = true; # UPO
+$wgEmergencyContact = "no-reply@wikonia.net";  // E-Mail-Adresse, an die Notfallbenachrichtigungen gesendet werden.
+$wgPasswordSender = "no-reply@wikonia.net";   // E-Mail-Adresse, die als Absender für Passwort- und Benachrichtigungs-E-Mails verwendet wird.
 
-$wgEmergencyContact = "no-reply@wikonia.net";
-$wgPasswordSender = "no-reply@wikonia.net";
+$wgEnableEmail = true;        // Ermöglicht das Senden und Empfangen von E-Mails über das Wiki.   
+$wgEnableUserEmail = true;    // Ermöglicht Benutzern, E-Mails an andere Benutzer zu senden.
 
-$wgEnotifUserTalk = true; # UPO
-$wgEnotifWatchlist = true; # UPO
-$wgEmailAuthentication = true;
+$wgEnotifUserTalk = true;   // Benachrichtigt Benutzer per E-Mail, wenn sie auf ihrer Diskussionsseite angesprochen werden.
+$wgEnotifWatchlist = true; // Benachrichtigt Benutzer per E-Mail, wenn eine Seite auf ihrer Beobachtungsliste geändert wird.
+$wgEmailAuthentication = true;  // E-Mail-Authentifizierung aktivieren, um sicherzustellen, dass E-Mails von echten Benutzern gesendet werden.
 
-## Database settings
+/** Datenbank Einstellungen
+ * Diese Einstellungen sind für die Verbindung zur Datenbank verantwortlich,
+ * in der die Wiki-Inhalte gespeichert werden.
+ * Sie sind aus der secrets.php-Datei geladen, die sensible Informationen enthält.
+ */
+
+/* Verbindung zur Datenbank */
 $wgDBtype = "mysql";
 $wgDBserver = $mySecrets['DBserver'];
 $wgDBname = $mySecrets['DBname'];
 $wgDBuser = $mySecrets['DBuser'];
 $wgDBpassword = $mySecrets['DBpassword'];
 
-# MySQL specific settings
+/* Worgaben zur Datenbankstruktur und Verschlüsselung und Tabellen*/
 $wgDBprefix = $mySecrets['DBprefix'];
 $wgDBssl = false;
 
-# MySQL table options to use during installation or update
 $wgDBTableOptions = "ENGINE=InnoDB, DEFAULT CHARSET=binary";
 
-# Shared database table
-# This has no effect unless $wgSharedDB is also set.
-$wgSharedTables[] = "actor";
+/* Gemeinsame Datenbank */
 
-## Shared memory settings
-$wgMainCacheType = CACHE_ACCEL;
-$wgMemCachedServers = [];
+$wgSharedTables[] = "actor";  // Zur Zeit noch nicht implementiert, aber für zukünftige Erweiterungen gedacht.
 
-## To enable image uploads, make sure the 'images' directory
-## is writable, then set this to true:
-$wgEnableUploads = true;
+$wgSecretKey = $mySecrets['SecretKey']; // Ein geheimer Schlüssel, der für die Verschlüsselung und Sicherheit des Wikis verwendet wird. Muss in der secrets.php definiert sein.
+$wgUpgradeKey = $mySecrets['UpgradeKey'];  // Ein Schlüssel, der für die Aktualisierung des Wikis verwendet wird. Muss in der secrets.php definiert sein.
+
+
+/** Caching Einstellungen
+ * Diese Einstellungen steuern das Caching von Inhalten, um die Leistung des Wikis zu verbessern.
+ * Sie sollten an die Serverumgebung und die Anforderungen des Wikis angepasst werden.
+ */
+
+$wgMainCacheType = CACHE_ACCEL;   // Der Hauptcache-Typ, der für die Speicherung von Seiteninhalten verwendet wird.
+$wgMemCachedServers = [];   // Liste von Memcached-Servern, die für das Caching verwendet werden können. Hier leer, da kein Memcached verwendet wird.
+
+#$wgCacheDirectory = "$IP/cache"; // Verzeichnis für den Cache. Hier auskommentiert, da kein lokaler Cache verwendet wird.
+
+/** Dateisystem Einstellungen
+ * Diese Einstellungen steuern, wo Mediendateien (Bilder, Videos, etc.) gespeichert werden.
+ * Sie sollten an die Serverumgebung und die Anforderungen des Wikis angepasst werden.
+ */
+
+$wgEnableUploads = true;  // Ermöglicht das Hochladen von Bildern und Dateien ins Wiki.
 #$wgUseImageMagick = true;
 #$wgImageMagickConvertCommand = "/usr/bin/convert";
 
-# InstantCommons allows wiki to use images from https://commons.wikimedia.org
-$wgUseInstantCommons = true;
-
-# Periodically send a pingback to https://www.mediawiki.org/ with basic data
-# about this MediaWiki instance. The Wikimedia Foundation shares this data
-# with MediaWiki developers to help guide future development efforts.
-$wgPingback = true;
-
-# Site language code, should be one of the list in ./includes/languages/data/Names.php
-$wgLanguageCode = "de";
-
-# Time zone
-$wgLocaltimezone = "UTC";
-
-## Set $wgCacheDirectory to a writable directory on the web server
-## to make your wiki go slightly faster. The directory should not
-## be publicly accessible from the web.
-#$wgCacheDirectory = "$IP/cache";
-
-$wgSecretKey = $mySecrets['SecretKey'];
+$wgUseInstantCommons = true; // Ermöglicht die Verwendung von Bildern aus Wikimedia Commons, um Speicherplatz zu sparen und die Nutzung von Medien zu erleichtern.
 
 # Changing this will log out all existing sessions.
 $wgAuthenticationTokenVersion = "1";
 
-# Site upgrade key. Must be set to a string (default provided) to turn on the
-# web installer while LocalSettings.php is in place
-$wgUpgradeKey = $mySecrets['UpgradeKey'];
+/** Rechte und Lizenzen
+ * Diese Einstellungen steuern die Rechte und Lizenzen für die Inhalte des Wikis.
+ * Sie sollten an die Anforderungen des Wikis angepasst werden.
+ */
 
-## For attaching licensing metadata to pages, and displaying an
-## appropriate copyright notice / icon. GNU Free Documentation
-## License and Creative Commons licenses are supported so far.
 $wgRightsPage = ""; # Set to the title of a wiki page that describes your license/copyright
 $wgRightsUrl = "https://creativecommons.org/licenses/by-sa/4.0/";
 $wgRightsText = "Creative Commons „Namensnennung – Weitergabe unter gleichen Bedingungen“";
 $wgRightsIcon = "$wgResourceBasePath/resources/assets/licenses/cc-by-sa.png";
 
-# Path to the GNU diff3 utility. Used for conflict resolution.
-$wgDiff3 = "/usr/bin/diff3";
 
-## Default skin: you can change the default skin. Use the internal symbolic
-## names, e.g. 'vector' or 'monobook':
-$wgDefaultSkin = "vector";
+/** Skins
+ * Diese Einstellungen laden die verschiedenen Skins, die für das Wiki verfügbar sind.
+ */
 
-# Enabled skins.
-# The following skins were automatically enabled:
+$wgDefaultSkin = "vector";    // Der Standard-Skin, der für das Wiki verwendet wird. Hier "vector" als Standard.
+
 wfLoadSkin( 'MinervaNeue' );
 wfLoadSkin( 'MonoBook' );
 wfLoadSkin( 'Timeless' );
 wfLoadSkin( 'Vector' );
 
 
-# Enabled extensions. Most of the extensions are enabled by adding
-# wfLoadExtension( 'ExtensionName' );
-# to LocalSettings.php. Check specific extension documentation for more details.
-# The following extensions were automatically enabled:
+/**
+ * Extenions aus dem Installer
+ * Nur zwingend notwendige Konfiguration hier, 
+ * weitere Konfig insbedsondere:
+ * Userrechte -> Abschnitt Rechte
+ * Cave: Anhängigkeiten beachten, soweit möglich als Kommentar angegeben.
+ */
+
 wfLoadExtension( 'AbuseFilter' );
 wfLoadExtension( 'CategoryTree' );
 wfLoadExtension( 'Cite' );
@@ -194,12 +219,15 @@ wfLoadExtension( 'VisualEditor' );
 wfLoadExtension( 'WikiEditor' );
 
 
-# End of automatically generated settings.
-# Add more configuration options below.
+/**
+ * Zusätzliche Extensions
+ * Nur zwingend notwendige Konfiguration hier, 
+ * weitere Konfig insbedsondere:
+ * Userrechte -> Abschnitt Rechte
+ * Cave: Anhängigkeiten und reihenfolge beachten, soweit möglich als Kommentar angegeben.
+ */
 
-### Installation zusätzlicher Extensions  ###
-wfLoadExtension( 'Lockdown' );				// Aussperren aus Namensräumen und Seiten für feingranularere Rechteverwaltung
-#wfLoadExtension( 'StopForumSpam' );			// Spam-Schutz: Keine Bekannten Spam-IPs zulassen
+wfLoadExtension( 'Lockdown' );				// Aussperren aus Namensräumen und Seiten für feingranulare Zugangverwaltung
 
 wfLoadExtension( 'CheckUser' );				// Checkuser: IPs nachschauen
 wfLoadExtension( 'Cargo' );				// Speichern strukturierter Daten für Artikel
@@ -209,41 +237,36 @@ wfLoadExtension( 'RevisionSlider' );			// Bessere Dartellung Revisionsverläufe
 wfLoadExtension( 'WhoIsWatching' );			// Anzeigen, wer eine Seite beobachtet
 wfLoadExtension( 'PageNotice' );			// Hinweisbanner pro Namensraum / Seite
 wfLoadExtension( 'DynamicSidebar' );			// Benutzerspezifische Seitenleist
+wfLoadExtension( 'UniversalLanguageSelector' );		// Anhängigkeit für Translate
+wfLoadExtension( 'Translate' );      // Übersetzungs-Extension, die auch die MediaWiki-UI übersetzt
 
 
 
+/** Extensions - Konfiguration
+ * Setzen allgemein gültiger Konfiguration
+ * nicht BEnutzer, bzw- Rechte.
+ */
 
 
-
-### Konfiguration zusätzler Extensions ###
-
-## Lockdown ##
+/** Lockdown */
 
 // Nur Admins dürfen Spezialseite "Version" sehen
 $wgSpecialPageLockdown['Version'] = [ 'sysop' ];
 
 
-## Citoid ##
-wfLoadExtension( 'UniversalLanguageSelector' );		// Anhängigkeit für Translate
-wfLoadExtension( 'Translate' );
 
-## FlaggedRevs ##
-wfLoadExtension( 'ApprovedRevs' );
+/** NAMESPACES 
+ * Definition zusätzlichen Namensräume und Alias
+ */
 
-// Optional: Nur bestimmte Namensräume aktivieren
-$wgApprovedRevsNamespaces = [ NS_MAIN ]; // nur im Hauptnamensraum
-
-// Optional: Nur bestimmte Gruppen dürfen freigeben
-$wgGroupPermissions['sysop']['approverevisions'] = true;	//Später anpassen auf weitere Gruppen
-
-### Namesnräume ###
-
-## Öffentliche Zusatznamensräume ##
+ /* Öffentliche zusätzlich Namensräume */
 
 define("NS_PORTAL", 100);
 define("NS_PORTAL_TALK", 101);
 $wgExtraNamespaces[NS_PORTAL] = "Portal";
 $wgExtraNamespaces[NS_PORTAL_TALK] = "Portal_Diskussion";
+$wgNamespacesWithSubpages[NS_PORTAL] = true; // Portal kann Unterseiten haben
+
 
 
 define("NS_ECHO", 301);
@@ -256,24 +279,38 @@ define("NS_PROBLEME_TALK", 304);
 $wgExtraNamespaces[NS_PROBLEME] = "Probleme";
 $wgExtraNamespaces[NS_PROBLEME_TALK] = "Probleme_Diskussion";
 
-## Interne Zusatznamensräume ##
+/** Interne zusätzliche Namensräume
+ * Diese Namensräume sind nur für interne Zwecke gedacht
+ * und sollen nicht von allen Benutzern verwendet werden.
+ * Sie sind nicht im Menü sichtbar und sollten auch nicht
+ * in der Suche auftauchen.
+ */
+
 define("NS_PORTALINTERN", 350);
 define("NS_PORTALINTERN_TALK", 351);
 $wgExtraNamespaces[NS_PORTALINTERN] = "PortalIntern";
 $wgExtraNamespaces[NS_PORTALINTERN_TALK] = "PortalIntern_Diskussion";
+$wgNamespacesWithSubpages[NS_PORTALINTERN] = true; // PortalIntern kann Unterseiten haben
 
 define("NS_TEAM", 352);
 define("NS_TEAM_TALK", 353);
 $wgExtraNamespaces[NS_TEAM] = "Team";
 $wgExtraNamespaces[NS_TEAM_TALK] = "Team_Diskussion";
+$wgNamespacesWithSubpages[NS_TEAM] = true; // Team kann Unterseiten haben
 
 define("NS_INTERN", 354);
 define("NS_INTERN_TALK", 355);
 $wgExtraNamespaces[NS_INTERN] = "Intern";
 $wgExtraNamespaces[NS_INTERN_TALK] = "Intern_Diskussion";
+$wgNamespacesWithSubpages[NS_INTERN] = true; // Intern kann Unterseiten haben
 
+/* Namensräume verstecken */
 
-## Alias für Namensräume ##
+$wgNamespaceProtection[NS_ECHO_TALK] = [ 'never' ];
+$wgNamespaceProtection[NS_INTERN_TALK] = [ 'never' ];
+$wgNamespaceContentModels[NS_ECHO_TALK] = 'wikitext'; // nötig für saubere Darstellung
+
+/** Alias für Namensräume */
 
 $wgNamespaceAliases += [
 	'Projekt' 					=> NS_PROJECT,			// Für Verwirrte und Hardliner
@@ -300,14 +337,20 @@ $wgNamespaceAliases += [
 	];
 
 
-## Namensräume verstecken ##
-$wgNamespaceProtection[NS_ECHO_TALK] = [ 'never' ];
-$wgNamespaceProtection[NS_INTERN_TALK] = [ 'never' ];
-$wgNamespaceContentModels[NS_ECHO_TALK] = 'wikitext'; // nötig für saubere Darstellung
+  
+/** Userrechte
+ * Konfiguration der Benutzerrechte
+ * Rechte für Benutzergruppen
+ * und Spezialseiten.
+ * Cave: Anhängigkeiten beachten, soweit möglich als Kommentar angegeben.
+ */
 
-
-### Benutzer-Gruppen  ###
-
+/** Allgemeine Benutzerrechte (Anonyme User) */
+$wgGroupPermissions['*']['createaccount'] = true;		// Anonyme Benutzer können Accounts anlegen
+$wgGroupPermissions['*']['edit'] = true;			// Anonyme Benutzer können Seiten bearbeiten
+$wgGroupPermissions['*']['read'] = true;			// Anonyme Benutzer können Seiten lesen
+$wgGroupPermissions['*']['createpage'] = true;		// Anonyme Benutzer können Seiten anlegen
+$wgGroupPermissions['*']['createtalk'] = true;		// Anonyme Benutzer können Diskussionsseiten anlegen
 
 ## Admins (sysop) ##
 $wgUserMergeProtectedGroups = [ 'sysop' ];			// Admins können nicht gemerged werden
