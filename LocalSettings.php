@@ -137,7 +137,8 @@ $wgDBTableOptions = "ENGINE=InnoDB, DEFAULT CHARSET=binary";
 $wgSharedTables[] = "actor";  // Zur Zeit noch nicht implementiert, aber für zukünftige Erweiterungen gedacht.
 
 $wgSecretKey = $mySecrets['SecretKey']; // Ein geheimer Schlüssel, der für die Verschlüsselung und Sicherheit des Wikis verwendet wird. Muss in der secrets.php definiert sein.
-#$wgUpgradeKey = $mySecrets['UpgradeKey'];  // Ein Schlüssel, der für die Aktualisierung des Wikis verwendet wird. Muss in der secrets.php definiert sein.
+
+$wgUpgradeKey = $mySecrets['UpgradeKey'];  // Ein Schlüssel, der für die Aktualisierung des Wikis verwendet wird. Muss in der secrets.php definiert sein.
 
 /** Dateisystem Einstellungen
  * Diese Einstellungen steuern, wo Mediendateien (Bilder, Videos, etc.) gespeichert werden.
