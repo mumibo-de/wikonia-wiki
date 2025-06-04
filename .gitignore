@@ -69,6 +69,7 @@ Thumbs.db
 **/README.md
 !/README.md
 !/wikonia-assets/**/*.md
+!CHANGELOG.md
 
 # 7. Docker (nur lokal für Dev)
 docker-compose.yml
