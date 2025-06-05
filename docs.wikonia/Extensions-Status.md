@@ -1,4 +1,4 @@
-# 📦 MediaWiki Extension Status (Stand: 2025-06-04)
+# 📦 MediaWiki Extension Status (Stand: 2025-06-05)
 
 ## ✅ Installiert & Aktiviert
 
