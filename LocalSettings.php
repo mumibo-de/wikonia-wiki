@@ -83,7 +83,9 @@ require_once $secretFile;
 
 $wgSitename = "Wikonia";  // Der Name des Wikis, der auf der Hauptseite und in der Kopfzeile angezeigt wird.
 
-$wgScriptPath = ""; // Der Pfad zum Wiki-Skript, relativ zur Domain.
+$wgScriptPath = "";     // Der Pfad zum Wiki-Skript, für die URL-Struktur. Wir nutzen Root-URL, daher leer.
+$wgArticlePath = "/$1"; // Artikelpfad, der für die URL-Struktur verwendet wird, falls das Wiki im Root-Verzeichnis liegt. Dies ermöglicht saubere URLs ohne "index.php".
+$wgUsePathInfo = true;  // Aktivieren von URL-Rewriting, um saubere URLs zu ermöglichen. Dies ist wichtig für die Benutzerfreundlichkeit und SEO.
 
 $wgServer = "https://wiki.wikonia.net"; // Die Basis-URL des Wikis, die für Links und Weiterleitungen verwendet wird.
 
@@ -386,38 +388,38 @@ $wgNamespaceAliases += [
    * Diese Einstellung erlaubt die Verwendung des VisualEdiors in weiteren Namensräumen.
    * Standardmäßig ist der VisualEditor nur im Hauptnamensraum und im Namensraum "Diskussion" aktiviert.
    */
-$wgVisualEditorEnableNamespaces = [
-  NS_MAIN,          // Hauptnamensraum (eigentlich default)
-  NS_TALK,          // Diskussionsseiten (default)
-  NS_PROJECT,       // Projektseiten
-  NS_PROJECT_TALK,  // Diskussionsseiten zu Projektseiten
-  NS_PORTAL,        // Portalseiten
-  NS_PORTAL_TALK,   // Diskussionsseiten zu Portalseiten
-  NS_PROBLEME,      // Problemlösungsseiten
-  NS_PROBLEME_TALK, // Diskussionsseiten zu Problemlösungsseiten
-  NS_ECHO,          // Echo-Namensraum
-  NS_ECHO_TALK,     // Diskussionsseiten zu Echo-Namensraum
-  NS_PORTALINTERN,  // Interne Portalseiten
-  NS_PORTALINTERN_TALK, // Diskussionsseiten zu internen Portalseiten
-  NS_TEAM,         // Teamseiten
-  NS_TEAM_TALK,    // Diskussionsseiten zu Teamseiten
-  NS_INTERN,       // Interne Seiten
-  NS_INTERN_TALK,  // Diskussionsseiten zu internen Seiten
-];
+  $wgVisualEditorEnableNamespaces = [
+    NS_MAIN,          // Hauptnamensraum (eigentlich default)
+    NS_TALK,          // Diskussionsseiten (default)
+    NS_PROJECT,       // Projektseiten
+    NS_PROJECT_TALK,  // Diskussionsseiten zu Projektseiten
+    NS_PORTAL,        // Portalseiten
+    NS_PORTAL_TALK,   // Diskussionsseiten zu Portalseiten
+    NS_PROBLEME,      // Problemlösungsseiten
+    NS_PROBLEME_TALK, // Diskussionsseiten zu Problemlösungsseiten
+    NS_ECHO,          // Echo-Namensraum
+    NS_ECHO_TALK,     // Diskussionsseiten zu Echo-Namensraum
+    NS_PORTALINTERN,  // Interne Portalseiten
+    NS_PORTALINTERN_TALK, // Diskussionsseiten zu internen Portalseiten
+    NS_TEAM,         // Teamseiten
+    NS_TEAM_TALK,    // Diskussionsseiten zu Teamseiten
+    NS_INTERN,       // Interne Seiten
+    NS_INTERN_TALK,  // Diskussionsseiten zu internen Seiten
+  ];
 
   /** 
    * Footer Links
    * Diese Einstellungen fügen Links zum Footer hinzu.
    * 
    */
-$wgHooks['SkinAddFooterLinks'][] = function ( Skin $skin, string $key, array &$footerlinks ) {
-	if ( $key === 'places' ) {
-			// Nutzungsbedingungen (Projekt:Nutzung)
-		$footerlinks['nutzung'] = Html::rawElement( 'a', [
-			'href' => Title::newFromText( 'Wikonia:Nutzungsbedingungen' )->getLocalURL()
-		], $skin->msg( 'wikonia-terms' )->escaped() );
-	}
-};
+  $wgHooks['SkinAddFooterLinks'][] = function ( Skin $skin, string $key, array &$footerlinks ) {
+    if ( $key === 'places' ) {
+        // Nutzungsbedingungen (Projekt:Nutzung)
+      $footerlinks['nutzung'] = Html::rawElement( 'a', [
+        'href' => Title::newFromText( 'Wikonia:Nutzungsbedingungen' )->getLocalURL()
+      ], $skin->msg( 'wikonia-terms' )->escaped() );
+    }
+  };
 
 
   
