@@ -293,11 +293,22 @@ wfLoadExtension( 'Translate' );      // Übersetzungs-Extension, die auch die Me
 
 /** Extensions - Konfiguration
  * Setzen allgemein gültiger Konfiguration
- * nicht BEnutzer, bzw- Rechte.
+ * nicht Benutzer, bzw- Rechte.
  */
 
-$wgDefaultUserOptions['visualeditor-enable'] = 1; // Standardmäßig den VisualEditor aktivieren, damit Benutzer ihn nutzen können.
-$wgDefaultUserOptions['visualeditor-enable-experimental'] = 1; // Aktiviert experimentelle Funktionen im VisualEditor für Benutzer.
+$wgVisualEditorEnableWikitext = true; // Aktiviert die Bearbeitung im Quelltextmodus im VisualEditor, um den Benutzern die Möglichkeit zu geben, den Quelltext direkt zu bearbeiten.
+$wgVisualEditorEnableToolbar = true; // Aktiviert die Werkzeugleiste im VisualEditor, um die Bearbeitung zu erleichtern.
+
+$wgDefaultUserOptions['visualeditor-enable'] = 1; // Standardmäßig den VisualEditor aktivieren, wenn er verfügbar ist.
+$wgHiddenPrefs[] = 'visualeditor-enable'; // Keine Beta-Spielchen
+$wgVisualEditorUseSingleEditTab = true; // Aktiviert den einzelnen Bearbeiten-Tab für den VisualEditor, anstatt zwischen Quelltext und VisualEditor zu wechseln.
+
+/**
+ * Parsoid - Konfiguration
+ * Diese Einstellungen sind für die Parsoid-Integration erforderlich,
+ */
+$wgVisualEditorParsoidAutoConfig = true;
+$wgVirtualRestConfig['modules']['parsoid'] = [];
 
 /** Lockdown */
 
@@ -317,6 +328,9 @@ $wgApprovedRevsEnableAutoOnMove = true;           // Automatische Freigabe der l
 $wgApprovedRevsEnableAutoOnMoveToNew = true;      // Automatische Freigabe der letzten Revision beim Verschieben in einen neuen Artikel aktivieren
 $wgApprovedRevsEnableAutoOnEdit = true;           // Automatische Freigabe der letzten Revision beim Bearbeiten aktivieren
 $wgApprovedRevsEnableAutoOnEditToNew = true;      // Automatische Freigabe der letzten Revision beim Bearbeiten in einen neuen Artikel aktivieren   
+$wgApprovedRevsUseVisualEditor = true;
+$wgApprovedRevsUseVisualEditorOnEdit = true;      // VisualEditor beim Bearbeiten verwenden
+$wgApprovedRevsUseVisualEditorOnMove = true;      // VisualEditor beim Verschieben verwenden
 
 /** NAMESPACES 
  * Definition zusätzlichen Namensräume und Alias
@@ -394,29 +408,59 @@ $wgNamespaceAliases += [
 	'MW' 	=> NS_MEDIAWIKI
 	];
 
+/**
+ * Content-Namensräume
+ * Diese Namensräume sind für die Inhalte des Wikis gedacht.
+ */
+  $wgContentNamespaces = [
+  NS_MAIN,
+  NS_HELP,
+  NS_PROJECT,
+  NS_ECHO,
+  NS_PROBLEME
+];
+
+
   /** VisualEditor-Aktivierung
    * Diese Einstellung erlaubt die Verwendung des VisualEdiors in weiteren Namensräumen.
    * Standardmäßig ist der VisualEditor nur im Hauptnamensraum und im Namensraum "Diskussion" aktiviert.
    */
+// ALLE relevanten Namespaces für VE aktivieren
   $wgVisualEditorEnableNamespaces = [
-    NS_MAIN,          // Hauptnamensraum (eigentlich default)
-    NS_TALK,          // Diskussionsseiten (default)
-    NS_PROJECT,       // Projektseiten
-    NS_PROJECT_TALK,  // Diskussionsseiten zu Projektseiten
-    NS_HELP,          // Hilfeseiten
-    NS_HELP_TALK,     // Diskussionsseiten zu Hilfeseiten
-    NS_PORTAL,        // Portalseiten
-    NS_PORTAL_TALK,   // Diskussionsseiten zu Portalseiten
-    NS_PROBLEME,      // Problemlösungsseiten
-    NS_PROBLEME_TALK, // Diskussionsseiten zu Problemlösungsseiten
-    NS_ECHO,          // Echo-Namensraum
-    NS_ECHO_TALK,     // Diskussionsseiten zu Echo-Namensraum
-    NS_PORTALINTERN,  // Interne Portalseiten
-    NS_PORTALINTERN_TALK, // Diskussionsseiten zu internen Portalseiten
-    NS_TEAM,         // Teamseiten
-    NS_TEAM_TALK,    // Diskussionsseiten zu Teamseiten
-    NS_INTERN,       // Interne Seiten
-    NS_INTERN_TALK,  // Diskussionsseiten zu internen Seiten
+    NS_MAIN => true,
+    NS_TALK => true,
+    NS_HELP => true,
+    NS_HELP_TALK => true,
+    NS_CATEGORY => true,
+    NS_CATEGORY_TALK => true,
+    NS_PROJECT => true,
+    NS_PROJECT_TALK => true,
+    NS_ECHO => true,
+    NS_ECHO_TALK => true,
+    NS_PROBLEME => true,
+    NS_PROBLEME_TALK => true,
+    NS_PORTAL => true,
+    NS_PORTAL_TALK => true,
+    NS_PORTALINTERN => true,
+    NS_PORTALINTERN_TALK => true,
+    NS_TEAM => true,
+    NS_TEAM_TALK => true,
+    NS_INTERN => true,
+    NS_INTERN_TALK => true,
+  ];
+
+// Diese Namespaces gelten als Content → Button wird angezeigt
+  $wgContentNamespaces = [
+    NS_MAIN,
+    NS_HELP,
+    NS_CATEGORY,
+    NS_PROJECT,
+    NS_ECHO,
+    NS_PROBLEME,
+    NS_PORTAL,
+    NS_PORTALINTERN,
+    NS_TEAM,
+    NS_INTERN,
   ];
 
   /** 
@@ -449,6 +493,10 @@ $wgGroupPermissions['*']['read'] = true;			// Anonyme Benutzer können Seiten le
 $wgGroupPermissions['*']['createpage'] = true;		// Anonyme Benutzer können Seiten anlegen
 $wgGroupPermissions['*']['createtalk'] = true;		// Anonyme Benutzer können Diskussionsseiten anlegen
 $wgGroupPermissions['*']['writeapi'] = true;      // Anonyme Benutzer können die API zum Schreiben verwenden. Vorausetzung für den VisualEditor.
+
+/** Benutzerrechte (Benutzer) */
+$wgGroupPermissions['user']['editcontentmodel'] = true;  // Benutzer können den Inhaltstyp von Seiten ändern
+
 
 ## Admins (sysop) ##
 $wgUserMergeProtectedGroups = [ 'sysop' ];			// Admins können nicht gemerged werden
