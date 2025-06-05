@@ -6,7 +6,7 @@ Datum: 2025-06-06
 * Zusätzlicher Footer-Link für Nutzungsbedingungen
 * VisualEditor als Standard gesetzt und in allen relevanten Namepaces aktiviert.
 * ModRewrite aktiviert und Einstellungen in der LocalSetttings angepasst.
-
+* Temporäre Konten aktiviert
 
 
 ## Version 0.2
