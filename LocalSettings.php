@@ -299,14 +299,24 @@ wfLoadExtension( 'Translate' );      // Übersetzungs-Extension, die auch die Me
 $wgDefaultUserOptions['visualeditor-enable'] = 1; // Standardmäßig den VisualEditor aktivieren, damit Benutzer ihn nutzen können.
 $wgDefaultUserOptions['visualeditor-enable-experimental'] = 1; // Aktiviert experimentelle Funktionen im VisualEditor für Benutzer.
 
-
-
 /** Lockdown */
 
 // Nur Admins dürfen Spezialseite "Version" sehen
 $wgSpecialPageLockdown['Version'] = [ 'sysop' ];
 
+/** ApprovedRevions
+ * 
+ */
 
+$wgApprovedRevsEnable = true;                     // Aktivieren der Funktion
+$wgApprovedRevsNamespaces = [ NS_MAIN, NS_HELP ]; // nur im Haupt- und Hilfenamensraum
+$wgApprovedRevsEnableReview = true;               // Freigabe von Revisionen aktivieren
+$wgApprovedRevsEnableAuto = true;                 // Automatische Freigabe der letzten Revision aktivieren  
+$wgApprovedRevsEnableAutoOnSave = true;           // Automatische Freigabe der letzten Revision beim Speichern aktivieren
+$wgApprovedRevsEnableAutoOnMove = true;           // Automatische Freigabe der letzten Revision beim Verschieben aktivieren
+$wgApprovedRevsEnableAutoOnMoveToNew = true;      // Automatische Freigabe der letzten Revision beim Verschieben in einen neuen Artikel aktivieren
+$wgApprovedRevsEnableAutoOnEdit = true;           // Automatische Freigabe der letzten Revision beim Bearbeiten aktivieren
+$wgApprovedRevsEnableAutoOnEditToNew = true;      // Automatische Freigabe der letzten Revision beim Bearbeiten in einen neuen Artikel aktivieren   
 
 /** NAMESPACES 
  * Definition zusätzlichen Namensräume und Alias
@@ -441,12 +451,14 @@ $wgGroupPermissions['*']['writeapi'] = true;      // Anonyme Benutzer können di
 ## Admins (sysop) ##
 $wgUserMergeProtectedGroups = [ 'sysop' ];			// Admins können nicht gemerged werden
 $wgGroupPermissions['sysop']['whoiswatching'] = true;		// Beobachtungsliste anzeigen
+$wgGroupPermissions['sysop']['approverevisions'] = true;	// Genehmigte Versionen freigeben
 
 ## Bürokraten (bureaucrat) ##
 $wgGroupPermissions['bureaucrat']['usermerge'] = true; 		// eBenutzer-Accounts zusammenlegen/löschen
 $wgGroupPermissions['bureaucrat']['userrights'] = true;		// Benutzerrechte verwalten
 $wgGroupPermissions['bureaucrat']['lockdown'] = true;		// Lockdown verwalten
 $wgGroupPermissions['bureaucrat']['checkuser'] = true;		// Checkuser-Rechte als Bürokrat
+
 
 
 
