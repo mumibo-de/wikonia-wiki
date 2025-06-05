@@ -294,6 +294,10 @@ wfLoadExtension( 'Translate' );      // Übersetzungs-Extension, die auch die Me
  * nicht BEnutzer, bzw- Rechte.
  */
 
+$wgDefaultUserOptions['visualeditor-enable'] = 1; // Standardmäßig den VisualEditor aktivieren, damit Benutzer ihn nutzen können.
+$wgDefaultUserOptions['visualeditor-enable-experimental'] = 1; // Aktiviert experimentelle Funktionen im VisualEditor für Benutzer.
+
+
 
 /** Lockdown */
 
@@ -360,27 +364,60 @@ $wgNamespaceContentModels[NS_ECHO_TALK] = 'wikitext'; // nötig für saubere Dar
 /** Alias für Namensräume */
 
 $wgNamespaceAliases += [
-	'Projekt' 					=> NS_PROJECT,			// Für Verwirrte und Hardliner
-    'Projekt_Diskussion' 		=> NS_PROJECT_TALK,	
-    'Benutzerin' 				=> NS_USER,				// Gendern "light"
-	'Benutzerin_Diskussion' 	=> NS_USER_TALK,		// Gendern "light" (aber konsequent)
-	'Problemlösung' 			=> NS_PROBLEME,			// Die Langform
+	'Projekt' 					=> NS_PROJECT,			    // Für Verwirrte und Hardliner
+  'Projekt_Diskussion' 		=> NS_PROJECT_TALK,	
+  'Benutzerin' 				=> NS_USER,				      // Gendern "light"
+	'Benutzerin_Diskussion' 	=> NS_USER_TALK,	// Gendern "light" (aber konsequent)
+	'Problemlösung' 			=> NS_PROBLEME,			  // Die Langform
 	'Problemlösung_Diskussion' 	=> NS_PROBLEME_TALK,  
 	 
 	// Shortcuts für Tippfaule
-    'W' 	=> NS_PROJECT,
-    'H' 	=> NS_HELP,
+  'W' 	=> NS_PROJECT,
+  'H' 	=> NS_HELP,
 	'K' 	=> NS_CATEGORY,
-    'V' 	=> NS_TEMPLATE,
-	
-	'PL' 	=> NS_PROBLEME,
-    
-    'Int' 	=> NS_INTERN,
-    'E' 	=> NS_ECHO,
-    
+  'V' 	=> NS_TEMPLATE,
+	'PL' 	=> NS_PROBLEME,  
+  'Int' => NS_INTERN,
+  'E' 	=> NS_ECHO, 
 	'MW' 	=> NS_MEDIAWIKI
-	
 	];
+
+  /** VisualEditor-Aktivierung
+   * Diese Einstellung erlaubt die Verwendung des VisualEdiors in weiteren Namensräumen.
+   * Standardmäßig ist der VisualEditor nur im Hauptnamensraum und im Namensraum "Diskussion" aktiviert.
+   */
+$wgVisualEditorEnableNamespaces = [
+  NS_MAIN,          // Hauptnamensraum (eigentlich default)
+  NS_TALK,          // Diskussionsseiten (default)
+  NS_PROJECT,       // Projektseiten
+  NS_PROJECT_TALK,  // Diskussionsseiten zu Projektseiten
+  NS_PORTAL,        // Portalseiten
+  NS_PORTAL_TALK,   // Diskussionsseiten zu Portalseiten
+  NS_PROBLEME,      // Problemlösungsseiten
+  NS_PROBLEME_TALK, // Diskussionsseiten zu Problemlösungsseiten
+  NS_ECHO,          // Echo-Namensraum
+  NS_ECHO_TALK,     // Diskussionsseiten zu Echo-Namensraum
+  NS_PORTALINTERN,  // Interne Portalseiten
+  NS_PORTALINTERN_TALK, // Diskussionsseiten zu internen Portalseiten
+  NS_TEAM,         // Teamseiten
+  NS_TEAM_TALK,    // Diskussionsseiten zu Teamseiten
+  NS_INTERN,       // Interne Seiten
+  NS_INTERN_TALK,  // Diskussionsseiten zu internen Seiten
+];
+
+  /** 
+   * Footer Links
+   * Diese Einstellungen fügen Links zum Footer hinzu.
+   * 
+   */
+$wgHooks['SkinAddFooterLinks'][] = function ( Skin $skin, string $key, array &$footerlinks ) {
+	if ( $key === 'places' ) {
+			// Nutzungsbedingungen (Projekt:Nutzung)
+		$footerlinks['nutzung'] = Html::rawElement( 'a', [
+			'href' => Title::newFromText( 'Wikonia:Nutzungsbedingungen' )->getLocalURL()
+		], $skin->msg( 'wikonia-terms' )->escaped() );
+	}
+};
 
 
   
@@ -397,6 +434,7 @@ $wgGroupPermissions['*']['edit'] = true;			// Anonyme Benutzer können Seiten be
 $wgGroupPermissions['*']['read'] = true;			// Anonyme Benutzer können Seiten lesen
 $wgGroupPermissions['*']['createpage'] = true;		// Anonyme Benutzer können Seiten anlegen
 $wgGroupPermissions['*']['createtalk'] = true;		// Anonyme Benutzer können Diskussionsseiten anlegen
+$wgGroupPermissions['*']['writeapi'] = true;      // Anonyme Benutzer können die API zum Schreiben verwenden. Vorausetzung für den VisualEditor.
 
 ## Admins (sysop) ##
 $wgUserMergeProtectedGroups = [ 'sysop' ];			// Admins können nicht gemerged werden
@@ -404,6 +442,11 @@ $wgGroupPermissions['sysop']['whoiswatching'] = true;		// Beobachtungsliste anze
 
 ## Bürokraten (bureaucrat) ##
 $wgGroupPermissions['bureaucrat']['usermerge'] = true; 		// eBenutzer-Accounts zusammenlegen/löschen
+$wgGroupPermissions['bureaucrat']['userrights'] = true;		// Benutzerrechte verwalten
+$wgGroupPermissions['bureaucrat']['lockdown'] = true;		// Lockdown verwalten
+$wgGroupPermissions['bureaucrat']['checkuser'] = true;		// Checkuser-Rechte als Bürokrat
+
+
 
 
 
