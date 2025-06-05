@@ -310,10 +310,6 @@ $wgVisualEditorUseSingleEditTab = true; // Aktiviert den einzelnen Bearbeiten-Ta
 $wgVisualEditorParsoidAutoConfig = true;
 $wgVirtualRestConfig['modules']['parsoid'] = [];
 
-/** Lockdown */
-
-// Nur Admins dürfen Spezialseite "Version" sehen
-$wgSpecialPageLockdown['Version'] = [ 'sysop' ];
 
 /** ApprovedRevions
  * 
@@ -363,11 +359,11 @@ $wgExtraNamespaces[NS_PROBLEME_TALK] = "Probleme_Diskussion";
  * in der Suche auftauchen.
  */
 
-define("NS_PORTALINTERN", 350);
-define("NS_PORTALINTERN_TALK", 351);
-$wgExtraNamespaces[NS_PORTALINTERN] = "PortalIntern";
-$wgExtraNamespaces[NS_PORTALINTERN_TALK] = "PortalIntern_Diskussion";
-$wgNamespacesWithSubpages[NS_PORTALINTERN] = true; // PortalIntern kann Unterseiten haben
+define("NS_PORTALTEAM", 350);
+define("NS_PORTALTEAM_TALK", 351);
+$wgExtraNamespaces[NS_PORTALTEAM] = "PortalTeam";
+$wgExtraNamespaces[NS_PORTALTEAM_TALK] = "PortalIntern_Diskussion";
+$wgNamespacesWithSubpages[NS_PORTALTEAM] = true; // PortalIntern kann Unterseiten haben
 
 define("NS_TEAM", 352);
 define("NS_TEAM_TALK", 353);
@@ -441,8 +437,8 @@ $wgNamespaceAliases += [
     NS_PROBLEME_TALK => true,
     NS_PORTAL => true,
     NS_PORTAL_TALK => true,
-    NS_PORTALINTERN => true,
-    NS_PORTALINTERN_TALK => true,
+    NS_PORTALTEAM => true,
+    NS_PORTALTEAM_TALK => true,
     NS_TEAM => true,
     NS_TEAM_TALK => true,
     NS_INTERN => true,
@@ -458,7 +454,7 @@ $wgNamespaceAliases += [
     NS_ECHO,
     NS_PROBLEME,
     NS_PORTAL,
-    NS_PORTALINTERN,
+    NS_PORTALTEAM,
     NS_TEAM,
     NS_INTERN,
   ];
@@ -486,6 +482,12 @@ $wgNamespaceAliases += [
  * Cave: Anhängigkeiten beachten, soweit möglich als Kommentar angegeben.
  */
 
+ /* Lockdown */
+$wgSpecialPageLockdown['Version'] = [ 'sysop' ]; // Nur Admins dürfen Spezialseite "Version" sehen
+$wgNamespacePermissionLockdown[NS_TEAM]['read'] = [ 'sysop' ]; // Nur Admins dürfen den Team-Namensraum lesen
+$wgNamespacePermissionLockdown[NS_INTERN]['read'] = [ 'bureaucrat' ]; // Nur Bürokraten dürfen den Intern-Namensraum lesen
+$wgNamespacePermissionLockdown[NS_PORTALTEAM]['read'] = [ 'admin' ]; // Nur Admins dürfen den PortalTeam-Namensraum lesen
+
 /** Allgemeine Benutzerrechte (Anonyme User) */
 $wgGroupPermissions['*']['createaccount'] = true;		// Anonyme Benutzer können Accounts anlegen
 $wgGroupPermissions['*']['edit'] = true;			// Anonyme Benutzer können Seiten bearbeiten
@@ -502,6 +504,8 @@ $wgGroupPermissions['user']['editcontentmodel'] = true;  // Benutzer können den
 $wgUserMergeProtectedGroups = [ 'sysop' ];			// Admins können nicht gemerged werden
 $wgGroupPermissions['sysop']['whoiswatching'] = true;		// Beobachtungsliste anzeigen
 $wgGroupPermissions['sysop']['approverevisions'] = true;	// Genehmigte Versionen freigeben
+
+
 
 ## Bürokraten (bureaucrat) ##
 $wgGroupPermissions['bureaucrat']['usermerge'] = true; 		// eBenutzer-Accounts zusammenlegen/löschen
