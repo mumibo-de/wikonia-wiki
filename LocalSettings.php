@@ -508,6 +508,16 @@ $wgGroupPermissions['bureaucrat']['usermerge'] = true; 		// eBenutzer-Accounts z
 $wgGroupPermissions['bureaucrat']['userrights'] = true;		// Benutzerrechte verwalten
 $wgGroupPermissions['bureaucrat']['lockdown'] = true;		// Lockdown verwalten
 $wgGroupPermissions['bureaucrat']['checkuser'] = true;		// Checkuser-Rechte als Bürokrat
+$wgGroupPermissions['bureaucrat']['hideuser'] = true;     // Benutzer verbergen
+$wgGroupPermissions['bureaucrat']['deleterevision'] = true; // Revisionen löschen
+$wgGroupPermissions['bureaucrat']['deletelogentry'] = true; // Protokolleinträge löschen
+$wgGroupPermissions['bureaucrat']['suppressrevision'] = true; // Revisionen verbergen
+$wgGroupPermissions['bureaucrat']['suppressredirect'] = true; // Weiterleitungen verbergen
+$wgGroupPermissions['bureaucrat']['suppressionlog'] = true; // Löschprotokoll anzeigen
+$wgGroupPermissions['bureaucrat']['suppressfile'] = true; // Dateien verbergen
+$wgGroupPermissions['bureaucrat']['suppressuser'] = true; // Benutzer verbergen
+$wgGroupPermissions['bureaucrat']['suppressuserlog'] = true; // Benutzerprotokoll verbergen
+$wgGroupPermissions['bureaucrat']['suppressrevisionlog'] = true; // Revisionsprotokoll verbergen
 
 
 
