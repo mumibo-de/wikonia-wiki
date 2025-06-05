@@ -1,3 +1,4 @@
+---
 name: 🧩 Extension Request  
 about: Eine neue Extension oder Funktion vorschlagen  
 title: "[Extension] "  
