@@ -1,4 +1,4 @@
-# 📦 MediaWiki Extension Status (Stand: 2025-06-04)
+# 📦 MediaWiki Extension Status (Stand: 2025-06-05)
 
 ## ✅ Installiert & Aktiviert
 
@@ -55,7 +55,6 @@
 | MassMessage          | Systemweite Benachrichtigungen                          |
 | RenameUser           | Umbenennen von Benutzerkonten                           |
 | Moderation           | Vorschaltkontrolle für Edits neuer Benutzer/IPs         |
-| StructuredDiscussions| Modernes, threadbasiertes Diskussionssystem (ehem. Flow)|
 | HeaderTabs           | Registerkarten-Darstellung                              |
 | Popups               | Vorschauen beim Hover über Links                        |
 | ShortDescription     | Meta-Beschreibung zur SEO-/Übersichtsoptimierung        |
