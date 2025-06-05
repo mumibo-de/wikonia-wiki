@@ -403,6 +403,8 @@ $wgNamespaceAliases += [
     NS_TALK,          // Diskussionsseiten (default)
     NS_PROJECT,       // Projektseiten
     NS_PROJECT_TALK,  // Diskussionsseiten zu Projektseiten
+    NS_HELP,          // Hilfeseiten
+    NS_HELP_TALK,     // Diskussionsseiten zu Hilfeseiten
     NS_PORTAL,        // Portalseiten
     NS_PORTAL_TALK,   // Diskussionsseiten zu Portalseiten
     NS_PROBLEME,      // Problemlösungsseiten
