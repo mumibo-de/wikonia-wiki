@@ -50,6 +50,8 @@
 
 | Extension             | Zweck / Kommentar                                      |
 |-----------------------|---------------------------------------------------------|
+| NewSignupPage          | Verbesserte Registierungsseite mit AGB und Datenschutzhinweis |
+| CookieBanner          | Cookie Banner für EU-Standards                         |
 | MassMessage          | Systemweite Benachrichtigungen                          |
 | RenameUser           | Umbenennen von Benutzerkonten                           |
 | Moderation           | Vorschaltkontrolle für Edits neuer Benutzer/IPs         |
@@ -57,14 +59,14 @@
 | HeaderTabs           | Registerkarten-Darstellung                              |
 | Popups               | Vorschauen beim Hover über Links                        |
 | ShortDescription     | Meta-Beschreibung zur SEO-/Übersichtsoptimierung        |
-| EmailLogger      | Nützlich, aber erst bei finalem SMTP-Setup relevant       |
+
 
 ---
 
 ## ⏳ Zurückgestellt / Technisch blockiert
 
-| Extension         | Kommentar                                                |
-|-------------------|-----------------------------------------------------------|
+| Extension        | Kommentar                                                 |
+|------------------|-----------------------------------------------------------|
 | Citoid           | Kein öffentlicher Dienst mehr, muss selbst gehostet werden|
 | TorBlock         | Verbindungsschwierigkeiten mit Schnittstelle              |
 | StopForumSpam    | Gleiches Problem wie bei TorBlock                         |
@@ -76,9 +78,10 @@
 
 | Extension         | Grund                                                       |
 |-------------------|-------------------------------------------------------------|
-| TitleBlacklist   | Ersetzt durch AbuseFilter                                   |
-| SpamBlacklist    | Ersetzt durch AbuseFilter                                   |
-| FlaggedRevs      | Zu komplex, ressourcenintensiv, langfristig nicht tragfähig |
+| TitleBlacklist   | Ersetzt durch AbuseFilter                                    |
+| SpamBlacklist    | Ersetzt durch AbuseFilter                                    |
+| FlaggedRevs      | Zu komplex, ressourcenintensiv, langfristig nicht tragfähig  |
+| EmailLogger      | Für den Einsatzzweck irrelevant.                             |
 
 ---
 
