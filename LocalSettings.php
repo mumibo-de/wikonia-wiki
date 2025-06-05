@@ -6,8 +6,8 @@
  * * Diese Version ist für die Produktionsumgebung gedacht und enthält
  *   Sicherheits- und Konfigurationseinstellungen, die für den Betrieb des Wikis
  *  erforderlich sind.
- * Produktivversion ab 2025-06-05
- * Git-Tag: v0.2
+ * Produktivversion ab 2025-06-06
+ * Git-Tag: v0.3
  */
 
 
@@ -496,8 +496,24 @@ $wgGroupPermissions['*']['createpage'] = true;		// Anonyme Benutzer können Seit
 $wgGroupPermissions['*']['createtalk'] = true;		// Anonyme Benutzer können Diskussionsseiten anlegen
 $wgGroupPermissions['*']['writeapi'] = true;      // Anonyme Benutzer können die API zum Schreiben verwenden. Vorausetzung für den VisualEditor.
 
+/** Temporäre Konten aktivieren */
+$wgAutoCreateTempUser['enabled'] = true;
+// Aktiviert die automatische Erstellung temporärer Benutzerkonten für anonyme Benutzer, die sich nicht registrieren möchten.
+$wgAutoCreateTempUser['expiry'] = 86400; // 1 Tag
+
+
 /** Benutzerrechte (Benutzer) */
 $wgGroupPermissions['user']['editcontentmodel'] = true;  // Benutzer können den Inhaltstyp von Seiten ändern
+$wgGroupPermissions['user']['upload'] = false;  // Benutzer können erstmal keine Dateien hochladen
+$wgGroupPermissions['user']['reupload'] = false; // Benutzer können erstmal keine Dateien überschreiben
+
+/** Benutzerrechte (Autoconfirmed) */
+$wgAutoConfirmAge = 259200; // 3 Tage
+$wgAutoConfirmCount = 15; // 15 Bearbeitungen
+$wgGroupPermissions['autoconfirmed']['editprotected'] = true;	// Autokonfirmierte Benutzer können geschützte Seiten bearbeiten
+$wgGroupPermissions['autoconfirmed']['upload'] = true;		// Autokonfirmierte Benutzer können Dateien hochladen
+$wgGroupPermissions['autoconfirmed']['reupload'] = true;	// Autokonfirmierte Benutzer können Dateien überschreiben
+
 
 
 ## Admins (sysop) ##
@@ -522,6 +538,14 @@ $wgGroupPermissions['bureaucrat']['suppressfile'] = true; // Dateien verbergen
 $wgGroupPermissions['bureaucrat']['suppressuser'] = true; // Benutzer verbergen
 $wgGroupPermissions['bureaucrat']['suppressuserlog'] = true; // Benutzerprotokoll verbergen
 $wgGroupPermissions['bureaucrat']['suppressrevisionlog'] = true; // Revisionsprotokoll verbergen
+$wgGroupPermissions['bureaucrat']['checkuser-temporary-account'] = true; // Bürokraten können temporäre Konten anzeigen 
+$wgGroupPermissions['bureaucrat']['checkuser-temporary-account-no-preference'] = true; 
+// Bürokraten können temporäre Konten ohne Präferenz anzeigen
+
+
+/** Unnötige Standard-Gruppen entfernen */
+unset( $wgGroupPermissions['checkuser-temporary-account-viewer'] );
+
 
 
 
