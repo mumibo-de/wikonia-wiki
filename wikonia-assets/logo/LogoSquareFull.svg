@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 116.65 138.91">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 116.65 142.89">
   <g id="b" data-name="Logo">
     <g id="e" data-name="Kreise">
       <g>
@@ -13,11 +13,11 @@
     </g>
   </g>
   <g id="f" data-name="Text">
-    <g id="g" data-name="Claim">
+    <g id="g" data-name="Brand">
       <text transform="translate(0 130.28) scale(1.08 1)" fill="#09465a" font-family="CuprumRoman-Bold, Cuprum" font-size="32.66" font-variation-settings="&apos;wght&apos; 700" font-weight="700"><tspan x="0" y="0">Wi</tspan><tspan x="32.99" y="0" letter-spacing="-.02em">k</tspan><tspan x="47.36" y="0" letter-spacing="0em">onia</tspan></text>
     </g>
-    <g id="h" data-name="Brand">
-      <text transform="translate(3.79 137.23)" fill="#09202d" font-family="Cuprum-Italic, Cuprum" font-size="8" font-style="italic" font-variation-settings="&apos;wght&apos; 400"><tspan x="0" y="0">Empowe</tspan><tspan x="24.84" y="0" letter-spacing="-.01em">r</tspan><tspan x="27.44" y="0">ed by Function</tspan></text>
+    <g id="h" data-name="Claim">
+      <text transform="translate(2.5 140.58)" fill="#09202d" font-family="Cuprum-Italic, Cuprum" font-size="11" font-style="italic" font-variation-settings="&apos;wght&apos; 400"><tspan x="0" y="0">Empowe</tspan><tspan x="34.15" y="0" letter-spacing="0em">r</tspan><tspan x="37.73" y="0">ed by Function</tspan></text>
     </g>
   </g>
 </svg>
