@@ -55,7 +55,6 @@
 | MassMessage          | Systemweite Benachrichtigungen                          |
 | RenameUser           | Umbenennen von Benutzerkonten                           |
 | Moderation           | Vorschaltkontrolle für Edits neuer Benutzer/IPs         |
-| StructuredDiscussions| Modernes, threadbasiertes Diskussionssystem (ehem. Flow)|
 | HeaderTabs           | Registerkarten-Darstellung                              |
 | Popups               | Vorschauen beim Hover über Links                        |
 | ShortDescription     | Meta-Beschreibung zur SEO-/Übersichtsoptimierung        |
