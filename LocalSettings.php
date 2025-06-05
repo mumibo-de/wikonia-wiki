@@ -1,16 +1,23 @@
 <?php
-# -----------------------------
-# Produktivversion ab 2025-06-04
-# Scribunto gefixt + vollständig lauffähig
-# Git-Tag: v0.1
-# -----------------------------
+/**
+ * LocalSettings.php
+ * Diese Datei ist die zentrale Konfigurationsdatei für das Wikonia-Wiki.
+ * Sie wird von MediaWiki automatisch geladen, wenn die Seite aufgerufen wird.
+ * * Diese Version ist für die Produktionsumgebung gedacht und enthält
+ *   Sicherheits- und Konfigurationseinstellungen, die für den Betrieb des Wikis
+ *  erforderlich sind.
+ * Produktivversion ab 2025-06-05
+ * Git-Tag: v0.2
+ */
 
+
+ 
 /** Debugging
  * Diese Einstellungen sind nur für die Entwicklungsumgebung gedacht.
  * In der Produktionsumgebung sollten sie deaktiviert sein,
  */
-## error_reporting(E_ALL);
-## ini_set("display_errors", 1);
+ ##error_reporting(E_ALL);
+ ##ini_set("display_errors", 1);
 
 
 /** Schutzmechanismen und Universalisierung der LocalSettings
@@ -91,12 +98,28 @@ $wgLocaltimezone = "UTC"; // Zeitzone des Wikis, die für die Anzeige von Datums
 $wgDiff3 = "/usr/bin/diff3"; // Setzen des Pfads zur diff3-Anwendung, die für die Konfliktauflösung verwendet wird. Muss auf dem Server installiert sein.
 
 /* Branding */
+//BUG: #14 Logo, Claim und Wortmarke in Vector-2022 nicht sauber gesetzt.
+$wgFavicon = "$wgResourceBasePath/wikonia-assets/favicon/favicon.ico"; // Das Favicon, das im Browser-Tab angezeigt wird. Hier auf das Wikonia-Logo gesetzt.
+$wgAppleTouchIcon = "$wgResourceBasePath/wikonia-assets/favicon/apple-touch-icon.png"; // Das Apple Touch Icon, das auf iOS-Geräten verwendet wird.
 $wgLogos = [
-	'1x' => "$wgResourceBasePath/resources/assets/change-your-logo.svg", // Logo in 1x Auflösung
-  #'1.5x' => "$wgResourceBasePath/resources/assets/change-your-logo.svg", // Logo in 1.5x Auflösung
-	'icon' => "$wgResourceBasePath/resources/assets/change-your-logo.svg", // Icon für Browser-Tabs und Lesezeichen
+	'1x' => "$wgResourceBasePath/wikonia-assets/logo/LogoSquareFull.svg", // Logo in 1x Auflösung
+  #'1.5x' => "$wgResourceBasePath/wikonia-assets/logo/LogoSquare.svg", // Logo in 1.5x Auflösung
+  #'2x' => "$wgResourceBasePath/wikonia-assets/logo/LogoSquare.svg", // Logo in 2x Auflösung
+  'svg' => "$wgResourceBasePath/wikonia-assets/logo/LogoSquare.svg", // SVG-Logo für skalierbare Grafiken
+	'icon' => "$wgResourceBasePath/wikonia-assets/logo/Signet.svg", // Icon ohne Wortmarke
+  'wordmark' => [
+    'src' => "$wgResourceBasePath/wikonia-assets/banner/Brandname.svg", // Wortmarke, die im Logo verwendet wird
+    #'1x' => "$wgResourceBasePath/wikonia-assets/banner/Brandname.svg", // Wortmarke in 1x Auflösung
+    'height' => 30, // Höhe der Wortmarke in Pixeln
+    'width' => 200, // Breite der Wortmarke in Pixeln
+  ],
+  'tagline' => [
+    'src' => "$wgResourceBasePath/wikonia-assets/banner/Claim.svg", // Tagline, die im Logo verwendet wird
+    #'1x' => "$wgResourceBasePath/wikonia-assets/banner/Tagline.svg", // Tagline in 1x Auflösung
+    'height' => 18, // Höhe der Tagline in Pixeln
+    'width' => 200, // Breite der Tagline in Pixeln
+  ],
   #'wordmark' => "$wgResourceBasePath/resources/assets/change-your-logo.svg", // Wortmarke, die im Logo verwendet wird
-
 ];
 
 /** E-Mail und Benachrichtungeinstellungen
@@ -119,7 +142,7 @@ $wgSMTP = [
     'auth'     => true,
     'username' => $mySecrets['smtp_user'], // E-Mail-Adresse des Postfachs 
     'password' => $mySecrets['smtp_pass'], // Passwort für das Postfach
-    'secure'   => 'tls',                  // STARTTLS
+    'secure'   => 'tls'                  // STARTTLS
 ];
 
 
