@@ -223,8 +223,8 @@ $wgRightsIcon = "$wgResourceBasePath/resources/assets/licenses/cc-by-sa.png";
 
 $wgDefaultSkin = "vector";    // Der Standard-Skin, der für das Wiki verwendet wird. Hier "vector" als Standard.
 
-wfLoadSkin( 'MinervaNeue' );
-wfLoadSkin( 'MonoBook' );
+#wfLoadSkin( 'MinervaNeue' );
+#wfLoadSkin( 'MonoBook' );
 wfLoadSkin( 'Timeless' );
 wfLoadSkin( 'Vector' );
 
