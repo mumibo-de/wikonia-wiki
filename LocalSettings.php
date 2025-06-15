@@ -311,6 +311,7 @@ $wgVisualEditorParsoidAutoConfig = true;
 $wgVirtualRestConfig['modules']['parsoid'] = [];
 
 
+
 /** ApprovedRevions
  * 
  */
@@ -474,6 +475,7 @@ $wgNamespaceAliases += [
   };
 
 
+
   
 /** Userrechte
  * Konfiguration der Benutzerrechte
@@ -495,17 +497,33 @@ $wgGroupPermissions['*']['read'] = true;			// Anonyme Benutzer können Seiten le
 $wgGroupPermissions['*']['createpage'] = true;		// Anonyme Benutzer können Seiten anlegen
 $wgGroupPermissions['*']['createtalk'] = true;		// Anonyme Benutzer können Diskussionsseiten anlegen
 $wgGroupPermissions['*']['writeapi'] = true;      // Anonyme Benutzer können die API zum Schreiben verwenden. Vorausetzung für den VisualEditor.
+$wgShowExceptionDetails = true;
 
 /** Temporäre Konten aktivieren */
 $wgAutoCreateTempUser['enabled'] = true;
+$wgAutoCreateTempUser['allowConvert'] = true;
+// Erlaubt temporären Benutzern, ihr Konto in ein reguläres Konto umzuwandeln, zumindet theoretisch...
 // Aktiviert die automatische Erstellung temporärer Benutzerkonten für anonyme Benutzer, die sich nicht registrieren möchten.
-$wgAutoCreateTempUser['expiry'] = 86400; // 1 Tag
+$wgAutoCreateTempUser['expiry'] = 86400*7; // 7 Tage
+$wgAutoCreateTempUser['preferenceWhitelist'] = [
+    'language',
+    'skin',
+    'usenewrc',
+    'watchdefault'
+];
+$wgAutoCreateTempUser['discussion'] = true; // Zeigt eigene Diskussionsseite an
+
+
+/** Temporäre Konten */
+$wgGroupPermissions['temporary']['createaccount'] = true; // Temporäre Benutzer können sich registrieren
+
 
 
 /** Benutzerrechte (Benutzer) */
 $wgGroupPermissions['user']['editcontentmodel'] = true;  // Benutzer können den Inhaltstyp von Seiten ändern
 $wgGroupPermissions['user']['upload'] = false;  // Benutzer können erstmal keine Dateien hochladen
 $wgGroupPermissions['user']['reupload'] = false; // Benutzer können erstmal keine Dateien überschreiben
+
 
 /** Benutzerrechte (Autoconfirmed) */
 $wgAutoConfirmAge = 259200; // 3 Tage
@@ -520,6 +538,7 @@ $wgGroupPermissions['autoconfirmed']['reupload'] = true;	// Autokonfirmierte Ben
 $wgUserMergeProtectedGroups = [ 'sysop' ];			// Admins können nicht gemerged werden
 $wgGroupPermissions['sysop']['whoiswatching'] = true;		// Beobachtungsliste anzeigen
 $wgGroupPermissions['sysop']['approverevisions'] = true;	// Genehmigte Versionen freigeben
+$wgGroupPermissions['sysop']['interwiki'] = true;		// Interwiki-Verwaltung
 
 
 
