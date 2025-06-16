@@ -1,5 +1,13 @@
 # Wikonia-Changelog
 
+## Version 0.4
+Status: intern stabil, nicht öffentlich
+Datum: 2025-06-16
+* Anpassung der Einstellungen für Temporäre Konten
+* CookieConsent installiert und konfiguriert
+* Ungenutzte Skins deaktiviert
+* WhoisWatching rekonfiguriert
+
 ## Version 0.3
 Status: intern stabil, nicht öffentlich
 Datum: 2025-06-06
