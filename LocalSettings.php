@@ -6,8 +6,8 @@
  * * Diese Version ist für die Produktionsumgebung gedacht und enthält
  *   Sicherheits- und Konfigurationseinstellungen, die für den Betrieb des Wikis
  *  erforderlich sind.
- * Produktivversion ab 2025-06-06
- * Git-Tag: v0.3
+ * Produktivversion ab 2025-06-16
+ * Git-Tag: v0.4
  */
 
 
@@ -288,6 +288,7 @@ wfLoadExtension( 'PageNotice' );			// Hinweisbanner pro Namensraum / Seite
 wfLoadExtension( 'DynamicSidebar' );			// Benutzerspezifische Seitenleist
 wfLoadExtension( 'UniversalLanguageSelector' );		// Anhängigkeit für Translate
 wfLoadExtension( 'Translate' );      // Übersetzungs-Extension, die auch die MediaWiki-UI übersetzt
+wfLoadExtension('CookieConsent'); // Cookie-Zustimmung für DSGVO-konforme Nutzung
 
 
 
@@ -311,6 +312,25 @@ $wgVisualEditorParsoidAutoConfig = true;
 $wgVirtualRestConfig['modules']['parsoid'] = [];
 
 
+/**CookieConsent
+ * Diese Einstellungen sind für die Cookie-Zustimmung erforderlich,
+ * um die DSGVO-konforme Nutzung des Wikis zu gewährleisten.
+ */
+
+ $wgCookieConsentCategories = [
+    "preference" => [
+        "namemsg" => "cookieconsent-category-name-preference",
+        "descriptionmsg" => "cookieconsent-category-desc-preference"
+    ],
+    "statistics" => [
+        "namemsg" => "cookieconsent-category-name-statistics",
+        "descriptionmsg" => "cookieconsent-category-desc-statistics"
+	],
+    "marketing" => [
+        "namemsg" => "cookieconsent-category-name-marketing",
+        "descriptionmsg" => "cookieconsent-category-desc-marketing"
+    ]
+]
 
 /** ApprovedRevions
  * 
