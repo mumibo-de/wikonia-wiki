@@ -111,15 +111,10 @@ $wgLogos = [
 	'icon' => "$wgResourceBasePath/wikonia-assets/logo/Signet.svg", // Icon ohne Wortmarke
   'wordmark' => [
     'src' => "$wgResourceBasePath/wikonia-assets/banner/Brandname.svg", // Wortmarke, die im Logo verwendet wird
-    #'1x' => "$wgResourceBasePath/wikonia-assets/banner/Brandname.svg", // Wortmarke in 1x Auflösung
-    'height' => 30, // Höhe der Wortmarke in Pixeln
-    'width' => 200, // Breite der Wortmarke in Pixeln
   ],
   'tagline' => [
     'src' => "$wgResourceBasePath/wikonia-assets/banner/Claim.svg", // Tagline, die im Logo verwendet wird
-    #'1x' => "$wgResourceBasePath/wikonia-assets/banner/Tagline.svg", // Tagline in 1x Auflösung
-    'height' => 18, // Höhe der Tagline in Pixeln
-    'width' => 200, // Breite der Tagline in Pixeln
+
   ],
   #'wordmark' => "$wgResourceBasePath/resources/assets/change-your-logo.svg", // Wortmarke, die im Logo verwendet wird
 ];
