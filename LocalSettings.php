@@ -221,12 +221,13 @@ $wgRightsIcon = "$wgResourceBasePath/resources/assets/licenses/cc-by-sa.png";
  * Diese Einstellungen laden die verschiedenen Skins, die für das Wiki verfügbar sind.
  */
 
-$wgDefaultSkin = "vector";    // Der Standard-Skin, der für das Wiki verwendet wird. Hier "vector" als Standard.
+$wgDefaultSkin = "vector-2022";    // Der Standard-Skin, der für das Wiki verwendet wird. Hier "vector" als Standard.
 
 #wfLoadSkin( 'MinervaNeue' );
 #wfLoadSkin( 'MonoBook' );
 wfLoadSkin( 'Timeless' );
 wfLoadSkin( 'Vector' );
+
 
 
 /**
@@ -291,6 +292,13 @@ wfLoadExtension( 'Translate' );      // Übersetzungs-Extension, die auch die Me
 wfLoadExtension('CookieConsent'); // Cookie-Zustimmung für DSGVO-konforme Nutzung
 
 
+/** Hooks
+ * Diese Einstellungen laden die verschiedenen Hooks, die für das Wiki verfügbar sind.
+ * Hooks ermöglichen es, das Verhalten von MediaWiki zu ändern, ohne den Quellcode zu ändern.
+ */
+
+
+
 
 /** Extensions - Konfiguration
  * Setzen allgemein gültiger Konfiguration
@@ -330,7 +338,8 @@ $wgVirtualRestConfig['modules']['parsoid'] = [];
         "namemsg" => "cookieconsent-category-name-marketing",
         "descriptionmsg" => "cookieconsent-category-desc-marketing"
     ]
-]
+  ];
+
 
 /** ApprovedRevions
  * 
@@ -535,7 +544,7 @@ $wgAutoCreateTempUser['discussion'] = true; // Zeigt eigene Diskussionsseite an
 
 
 /** Temporäre Konten */
-$wgGroupPermissions['temporary']['createaccount'] = true; // Temporäre Benutzer können sich registrieren
+#$wgGroupPermissions['temporary']['createaccount'] = true; // Temporäre Benutzer können sich registrieren
 
 
 
