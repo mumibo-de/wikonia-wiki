@@ -23,7 +23,7 @@ Ein durchdachtes, strukturiertes MediaWiki-Setup für Power-User, Admins und Wis
 
 ## 🧠 Über das Projekt
 
-Wikonia Reloaded ist eine Bare-Metal-Installation von MediaWiki mit klarer Trennung von:
+Wikonia ist eine Bare-Metal-Installation von MediaWiki mit klarer Trennung von:
 
 - **Eigenentwickelten Erweiterungen & Skins**
 - **Produktiv- und Stagingumgebung**
@@ -32,6 +32,19 @@ Wikonia Reloaded ist eine Bare-Metal-Installation von MediaWiki mit klarer Trenn
 - **Zukunftsfähiger CI/CD-Infrastruktur (optional)**
 
 Ziel ist es, ein performantes, wartbares und transparentes Wissenssystem zu schaffen – werbefrei, durchdacht, offen für Erweiterung und *nicht für das nächste Plugin-Grab gedacht*.
+
+---
+
+## 📣 Issue-Management & Tickets
+
+> **Achtung:**  
+> GitHub-Issues, PRs, Templates & Automatisierungsfeatures sind **endgültig abgeschaltet**.  
+> Der ganze Bananen-Workflow mit 27 Labeln, halbgarer Automation und Kommentaren à la „please rebase“ wurde nach [Phorge](https://phorge.wikonia.net) ausgelagert.  
+> 
+> 👉 **Tickets, Diskussionen & Roadmap jetzt ausschließlich dort!**  
+> Wer hier noch Issues meldet, spricht ins Leere.
+
+Alte Issue-Historie wurde migriert. Wenn du wissen willst, was zuletzt Thema war, schau auf Phorge vorbei – da gibt’s alles mit besserer Übersicht und weniger Bullshit-Bingo.
 
 ---
 
@@ -67,7 +80,7 @@ Wenn du weißt, warum man keine `.git`-Ordner in fremde Repos mitcommitted, bist
 > "Done is better than perfect.  
 > But structured beats both." – Wikonia Mantra
 
-Aktuell im Aufbau. Staging-Setup und CI/CD folgen in späteren Iterationen.  
+Aktuell im Aufbau. Staging-Setup oder Dev-Docker in späteren Iterationen und ggf. eigenständigen Repos.  
 Alle Inhalte werden manuell gepflegt und versioniert – kein Wildwuchs, kein Composer-Zirkus.
 
 ---
