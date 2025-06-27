@@ -1,5 +1,12 @@
 # Wikonia-Changelog
 
+## Version 0.5
+Status: intern stabil, nicht öffentlich
+Datum: 2025-06-16
+* Integration MobileFRontend -> Reaktivierung Miberva Neue (Vorübergehend, bis eigene Anpassungen für MobileDevices geschaffen wurden)
+* Austausch nach Redesign des Square-Logos (Asset) für optimierte Darstelllung im Vector 2010 Skin
+* Standard-Skin auf Vector-2022 festgelegt
+
 ## Version 0.4
 Status: intern stabil, nicht öffentlich
 Datum: 2025-06-16

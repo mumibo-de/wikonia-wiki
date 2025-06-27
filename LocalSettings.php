@@ -7,7 +7,7 @@
  *   Sicherheits- und Konfigurationseinstellungen, die für den Betrieb des Wikis
  *  erforderlich sind.
  * Produktivversion ab 2025-06-16
- * Git-Tag: v0.4
+ * Git-Tag: v0.5
  */
 
 
@@ -223,7 +223,7 @@ $wgRightsIcon = "$wgResourceBasePath/resources/assets/licenses/cc-by-sa.png";
 
 $wgDefaultSkin = "vector-2022";    // Der Standard-Skin, der für das Wiki verwendet wird. Hier "vector" als Standard.
 
-#wfLoadSkin( 'MinervaNeue' );
+wfLoadSkin( 'MinervaNeue' );
 #wfLoadSkin( 'MonoBook' );
 wfLoadSkin( 'Timeless' );
 wfLoadSkin( 'Vector' );
@@ -290,6 +290,7 @@ wfLoadExtension( 'DynamicSidebar' );			// Benutzerspezifische Seitenleist
 wfLoadExtension( 'UniversalLanguageSelector' );		// Anhängigkeit für Translate
 wfLoadExtension( 'Translate' );      // Übersetzungs-Extension, die auch die MediaWiki-UI übersetzt
 wfLoadExtension('CookieConsent'); // Cookie-Zustimmung für DSGVO-konforme Nutzung
+wfLoadExtension( 'MobileFrontend' ); // Mobile Frontend für die Nutzung auf mobilen Geräten
 
 
 /** Hooks
@@ -311,6 +312,21 @@ $wgVisualEditorEnableToolbar = true; // Aktiviert die Werkzeugleiste im VisualEd
 $wgDefaultUserOptions['visualeditor-enable'] = 1; // Standardmäßig den VisualEditor aktivieren, wenn er verfügbar ist.
 $wgHiddenPrefs[] = 'visualeditor-enable'; // Keine Beta-Spielchen
 $wgVisualEditorUseSingleEditTab = true; // Aktiviert den einzelnen Bearbeiten-Tab für den VisualEditor, anstatt zwischen Quelltext und VisualEditor zu wechseln.
+
+/** Mobile Frontend
+ * Diese Einstellungen sind für die mobile Ansicht des Wikis erforderlich,
+ * um eine benutzerfreundliche Darstellung auf mobilen Geräten zu gewährleisten.
+ */
+#$wgMobileFrontend = true;
+$wgMFAutodetectMobileView = true;
+#$wgMFDefaultSkinClass = 'minerva'; // Minerva für Mobilnutzer
+#$wgMFMobileFormatterHeadings = true;
+$wgDefaultMobileSkin = 'minerva'; // Setzt Minerva als Standard-Skin für mobile Geräte
+$wgMobileFrontendUseMobileStartPage = true; // Aktiviert die mobile Startseite für mobile Geräte.
+$wgMobileFrontendUseResponsiveImages = true; // Aktiviert responsive Bilder für mobile Geräte, um die Ladezeiten zu verbessern. 
+//Mmobil sofort Minerva zu erzwingen
+#$wgMFEnableMobilePreferences = false;
+#$wgMFDisplayWikibaseDescriptions = false;
 
 /**
  * Parsoid - Konfiguration
