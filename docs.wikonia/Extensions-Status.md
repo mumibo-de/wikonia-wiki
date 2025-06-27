@@ -1,86 +1,84 @@
-# 📦 MediaWiki Extension Status (Stand: 2025-06-05)
+# 📦 MediaWiki Extension Status (Stand: 2025-06-27)
 
 ## ✅ Installiert & Aktiviert
 
-| Extension                 | Zweck / Kommentar                                       |
-|---------------------------|----------------------------------------------------------|
-| AbuseFilter              | Missbrauchsvermeidung, ersetzt Title-/SpamBlacklist     |
-| ApprovedRevs             | Sichtung und Freigabe offizieller Seitenversionen       |
-| CategoryTree             | Hierarchische Kategoriedarstellung                      |
-| Cargo                    | Strukturierte Datenhaltung                              |
-| CheckUser                | IP-Prüfung durch berechtigte Benutzer                   |
-| Cite                     | Einfügen von Referenzen                                 |
-| CiteThisPage             | Zitatvorschlag für externe Nutzung                      |
-| CodeEditor               | Erweiterter Wikitext-Editor                             |
-| ConfirmEdit              | Captcha-Mechanismus (z. B. reCAPTCHA v3)                |
-| DiscussionTools          | UI-Erweiterung für klassische Diskussionsseiten         |
-| DynamicSidebar           | Benutzerabhängige Sidebar                               |
-| Echo                     | Benachrichtigungssystem                                 |
-| Gadgets                  | Benutzerdefinierte Skripte                              |
-| ImageMap                 | Interaktive Bildverlinkung                              |
-| InputBox                 | Benutzerdefinierte Such-/Eingabebox                     |
-| Interwiki                | Pflege von Interwiki-Links                              |
-| Linter                   | Quelltext-Analyse und Fehleranzeige                     |
-| LoginNotify              | Warnung bei Login-Versuchen                             |
-| Lockdown                 | Namespace-basierte Zugriffsbeschränkung                 |
-| MultimediaViewer         | Lightbox für Medien                                     |
-| Nuke                     | Massenlöschung durch Admins                             |
-| OATHAuth                 | Zwei-Faktor-Authentifizierung                           |
-| PageNotice               | Kontextsensitive Hinweise pro Seite/Namensraum          |
-| ParserFunctions          | Erweiterte Parserlogik (#if, #switch, …)               |
-| PdfHandler               | Einbindung und Vorschau von PDFs                        |
-| ReplaceText              | Globale Textsuchen & -ersetzung                         |
-| RevisionSlider           | Visueller Vergleich von Versionen                       |
-| Scribunto                | Lua-Unterstützung                                       |
-| SecureLinkFixer          | Automatischer HTTPS-Fix für externe Links               |
-| SyntaxHighlight_GeSHi    | Syntaxhervorhebung für Quelltext                        |
-| TemplateData             | Parameterhilfe für Vorlagen                             |
-| TextExtracts             | Vorschautexte für Seiten                                |
-| Thanks                   | Danksagungen zwischen Benutzern                         |
-| Translate                | Sprachversionen, Integration mit ULS                    |
-| UniversalLanguageSelector| Sprachauswahl, Voraussetzung für `Translate`            |
-| UserMerge                | Zusammenführung von Benutzerkonten                     |
-| VisualEditor             | WYSIWYG-Seiteneditor                                    |
-| WikiEditor               | Klassischer Editor mit Toolbar                          |
-| WhoIsWatching            | Anzeige der Beobachterliste                             |
+| Extension         | Zweck                        | Ticket / Kommentar               |
+|-------------------|-----------------------------|----------------------------------|
+| **AbuseFilter**   | Missbrauchsvermeidung       | ersetzt Title-/SpamBlacklist     |
+| **ApprovedRevs**  | Freigabe offizieller Seitenversionen | T67 (Rechte), T68 (Config), T69 (Doku) |
+| **CategoryTree**  | Hierarchische Kategoriedarstellung |                              |
+| **Cargo**         | Strukturierte Datenhaltung   |                                  |
+| **CheckUser**     | IP-Prüfung (nur Bürokraten) | Rechte noch bei Bürokraten       |
+| **Cite**          | Einfügen von Referenzen     | Zitationsvorlagen fehlen noch    |
+| **CiteThisPage**  | Zitatvorschlag für externe Nutzung |                              |
+| **CodeEditor**    | Erweiterter Wikitext-Editor |                                  |
+| **ConfirmEdit**   | Captcha (z. B. reCAPTCHA v3) | T70 (Umstellung auf reCAPTCHA v3) |
+| **DiscussionTools** | UI für Diskussionsseiten  |                                  |
+| **DynamicSidebar** | Benutzerabhängige Sidebar  | Seiten müssen noch konfiguriert werden |
+| **Echo**          | Benachrichtigungssystem     |                                  |
+| **Gadgets**       | Benutzerdefinierte Skripte  |                                  |
+| **ImageMap**      | Interaktive Bildverlinkung  |                                  |
+| **InputBox**      | Benutzerdef. Such-/Eingabebox |                                |
+| **Interwiki**     | Pflege von Interwiki-Links  |                                  |
+| **Linter**        | Quelltext-Analyse           |                                  |
+| **LoginNotify**   | Warnung bei Login-Versuchen |                                  |
+| **Lockdown**      | Namespace-basierte Zugriffsbeschränkung | T71 (Config/Rechte)       |
+| **MultimediaViewer** | Lightbox für Medien      |                                  |
+| **Nuke**          | Massenlöschung durch Admins |                                  |
+| **OATHAuth**      | Zwei-Faktor-Authentifizierung |                                |
+| **PageNotice**    | Kontextsensitive Hinweise   |                                  |
+| **ParserFunctions** | Erweiterte Parserlogik    |                                  |
+| **PdfHandler**    | Einbindung & Vorschau von PDFs | T72 (Funktionstest)           |
+| **ReplaceText**   | Globale Textsuche/-ersetzung|                                  |
+| **RevisionSlider**| Visueller Vergleich von Versionen |                             |
+| **Scribunto**     | Lua-Unterstützung           |                                  |
+| **SecureLinkFixer** | HTTPS-Fix für externe Links |                                |
+| **SyntaxHighlight_GeSHi** | Syntaxhervorhebung |                                  |
+| **TemplateData**  | Parameterhilfe für Vorlagen |                                  |
+| **TextExtracts**  | Vorschautexte für Seiten    |                                  |
+| **Thanks**        | Danksagungen                |                                  |
+| **Translate**     | Sprachversionen, ULS-Integration | T74 (Config)                  |
+| **UniversalLanguageSelector** | Sprachauswahl  |                                  |
+| **UserMerge**     | Zusammenführung von Konten  |                                  |
+| **VisualEditor**  | WYSIWYG-Seiteneditor        |                                  |
+| **WikiEditor**    | Klassischer Editor          |                                  |
+| **WhoIsWatching** | Anzeige der Beobachterliste | T76 (Rechteprüfung)             |
+| **CookieConsent** | Cookie-Einstellungen (EU)   | Texte müssen noch angepasst werden |
+| **MobileFrontend**| Verbesserte Darstellung mobil | Vorläufig mit alternativem Skin |
 
 ---
 
 ## 🟡 Geplant / Kommt bald
 
-| Extension             | Zweck / Kommentar                                      |
-|-----------------------|---------------------------------------------------------|
-| NewSignupPage          | Verbesserte Registierungsseite mit AGB und Datenschutzhinweis |
-| CookieBanner          | Cookie Banner für EU-Standards                         |
-| MassMessage          | Systemweite Benachrichtigungen                          |
-| RenameUser           | Umbenennen von Benutzerkonten                           |
-| Moderation           | Vorschaltkontrolle für Edits neuer Benutzer/IPs         |
-| HeaderTabs           | Registerkarten-Darstellung                              |
-| Popups               | Vorschauen beim Hover über Links                        |
-| ShortDescription     | Meta-Beschreibung zur SEO-/Übersichtsoptimierung        |
-
+| Extension         | Zweck                                  | Ticket      |
+|-------------------|----------------------------------------|-------------|
+| **MassMessage**   | Systemweite Benachrichtigungen         | T41         |
+| **RenameUser**    | Umbenennen von Benutzerkonten          | T77         |
+| **Moderation**    | Vorschaltkontrolle für neue Benutzer/IPs | T79         |
+| **HeaderTabs**    | Registerkarten-Darstellung             | T81         |
+| **Popups**        | Vorschau bei Hover über Links          | T82         |
+| **ShortDescription** | Meta-Beschreibung für SEO/Übersicht | T83         |
 
 ---
 
 ## ⏳ Zurückgestellt / Technisch blockiert
 
-| Extension        | Kommentar                                                 |
-|------------------|-----------------------------------------------------------|
-| Citoid           | Kein öffentlicher Dienst mehr, muss selbst gehostet werden|
-| TorBlock         | Verbindungsschwierigkeiten mit Schnittstelle              |
-| StopForumSpam    | Gleiches Problem wie bei TorBlock                         |
-
-
----
-
-## 🚫 Verworfen / bewusster Verzicht
-
-| Extension         | Grund                                                       |
-|-------------------|-------------------------------------------------------------|
-| TitleBlacklist   | Ersetzt durch AbuseFilter                                    |
-| SpamBlacklist    | Ersetzt durch AbuseFilter                                    |
-| FlaggedRevs      | Zu komplex, ressourcenintensiv, langfristig nicht tragfähig  |
-| EmailLogger      | Für den Einsatzzweck irrelevant.                             |
+| Extension         | Kommentar (Historie / Status / Optionen)             | Ticket    |
+|-------------------|------------------------------------------------------|-----------|
+| **Citoid**        | Automatisierte Zitatgenerierung. <br>**Historie:** Öffentlicher Dienst eingestellt; Selbsthosting möglich, aber aufwendig. <br>**Optionen:** Citoid selbst hosten oder manuell zitiert; erneut prüfen bei Bedarf/ Ressourcen. | T84       |
+| **TorBlock**      | Sperrt Zugriffe aus dem Tor-Netzwerk. <br>**Historie:** Verbindung zu Tor-Exitlisten aktuell nicht möglich. <br>**Optionen:** AbuseFilter als Workaround; regelmäßig auf Updates prüfen. | T85       |
+| **StopForumSpam** | Blockiert Spam-Accounts über Blacklists. <br>**Historie:** Schnittstelle aktuell unzuverlässig. <br>**Optionen:** AbuseFilter oder eigene Bot-Lösung prüfen, ggf. später erneut evaluieren. | T86          |
 
 ---
+
+## 🚫 Verworfen / Bewusster Verzicht
+
+| Extension           | Grund / Anmerkung                                             |
+|---------------------|--------------------------------------------------------------|
+| **TitleBlacklist**  | Durch AbuseFilter ersetzt                                    |
+| **SpamBlacklist**   | Durch AbuseFilter ersetzt                                    |
+| **FlaggedRevs**     | Zu komplex und ressourcenintensiv, langfristig nicht tragfähig|
+| **EmailLogger**     | Für den Einsatzzweck irrelevant                              |
+| **NewSignupPage**   | Durch eigene Lösung/Workaround ersetzt                       |
+| **CookieBanner**    | Durch CookieConsent abgelöst                                 |
 
