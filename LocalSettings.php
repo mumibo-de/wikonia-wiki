@@ -577,6 +577,14 @@ $wgGroupPermissions['autoconfirmed']['editprotected'] = true;	// Autokonfirmiert
 $wgGroupPermissions['autoconfirmed']['upload'] = true;		// Autokonfirmierte Benutzer können Dateien hochladen
 $wgGroupPermissions['autoconfirmed']['reupload'] = true;	// Autokonfirmierte Benutzer können Dateien überschreiben
 
+/** Benutzerrechte (confirmed) 
+ * Entspricht im Wesentlichen der Gruppe "Autoconfirmed",
+ * wird jedoch für die manuelle Freischaltung von Benutzern verwendet.
+*/
+
+$wgGroupPermissions['autoconfirmed']['editprotected'] = true;	// Autokonfirmierte Benutzer können geschützte Seiten bearbeiten
+$wgGroupPermissions['autoconfirmed']['upload'] = true;		// Autokonfirmierte Benutzer können Dateien hochladen
+$wgGroupPermissions['autoconfirmed']['reupload'] = true;	// Autokonfirmierte Benutzer können Dateien überschreiben
 
 
 ## Admins (sysop) ##
