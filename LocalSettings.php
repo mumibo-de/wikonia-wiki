@@ -7,7 +7,7 @@
  *   Sicherheits- und Konfigurationseinstellungen, die für den Betrieb des Wikis
  *  erforderlich sind.
  * Produktivversion ab 2025-06-28
- * Git-Tag: v0.6
+ * Git-Tag: v0.6.1
  */
 
 
@@ -653,9 +653,9 @@ $wgGroupPermissions['autoconfirmed']['reupload'] = true;	// Autokonfirmierte Ben
  * wird jedoch für die manuelle Freischaltung von Benutzern verwendet.
 */
 
-$wgGroupPermissions['autoconfirmed']['editprotected'] = true;	// Autokonfirmierte Benutzer können geschützte Seiten bearbeiten
-$wgGroupPermissions['autoconfirmed']['upload'] = true;		// Autokonfirmierte Benutzer können Dateien hochladen
-$wgGroupPermissions['autoconfirmed']['reupload'] = true;	// Autokonfirmierte Benutzer können Dateien überschreiben
+$wgGroupPermissions['confirmed']['editprotected'] = true;	// Autokonfirmierte Benutzer können geschützte Seiten bearbeiten
+$wgGroupPermissions['confirmed']['upload'] = true;		// Autokonfirmierte Benutzer können Dateien hochladen
+$wgGroupPermissions['confirmed']['reupload'] = true;	// Autokonfirmierte Benutzer können Dateien überschreiben
 
 
 ## Admins (sysop) ##
