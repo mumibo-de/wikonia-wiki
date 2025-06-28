@@ -378,7 +378,7 @@ $wgApprovedRevsUseVisualEditorOnMove = true;      // VisualEditor beim Verschieb
  * Einstellung für die Massenbenachrichtigungen
  */
 $wgMassMessageAccountUsername = 'HERMES'; // Der Benutzername des Kontos, das für Massenbenachrichtigungen verwendet wird. 
-
+$wgNamespacesToConvert = [ NS_USER => NS_USER_TALK ]; // Konvertiert Benutzernamensräume in Diskussionsseiten, um die Einschreibung zu erleichtern.
 
 /** NAMESPACES 
  * Definition zusätzlichen Namensräume und Alias
