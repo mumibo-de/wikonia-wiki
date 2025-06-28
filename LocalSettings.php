@@ -293,6 +293,7 @@ wfLoadExtension('CookieConsent'); // Cookie-Zustimmung für DSGVO-konforme Nutzu
 wfLoadExtension( 'MobileFrontend' ); // Mobile Frontend für die Nutzung auf mobilen Geräten
 wfLoadExtension( 'MassMessage' ); // Massenbenachrichtigungen an Benutzergruppen
 wfLoadExtension( 'Popups' ); // Popups für Links zu anderen Seiten, um die Benutzererfahrung zu verbessern
+wfLoadExtension( 'PageImages' ); // Automatische Generierung von Seitenbildern für Artikel
 
 /** Hooks
  * Diese Einstellungen laden die verschiedenen Hooks, die für das Wiki verfügbar sind.
@@ -381,6 +382,21 @@ $wgApprovedRevsUseVisualEditorOnMove = true;      // VisualEditor beim Verschieb
 $wgMassMessageAccountUsername = 'HERMES'; // Der Benutzername des Kontos, das für Massenbenachrichtigungen verwendet wird. 
 $wgNamespacesToConvert = [ NS_USER => NS_USER_TALK ]; // Konvertiert Benutzernamensräume in Diskussionsseiten, um die Einschreibung zu erleichtern.
 $wgMassMessageAccountAllowedTargetNamespaces = [ NS_USER_TALK ];
+
+
+/** PageImages
+ * Diese Einstellungen sind für die automatische Generierung von Seitenbildern erforderlich,
+ * um eine bessere Darstellung von Artikeln zu ermöglichen.
+ */
+
+ $wgPageImagesDenylist = [
+	// Lokale Seite, mit der die Denylist verwaltet wird.
+	[
+		'type' => 'db',
+		'page' => 'MediaWiki:Pageimages-denylist',
+		'db' => false,
+	]
+];
 
 /** NAMESPACES 
  * Definition zusätzlichen Namensräume und Alias
