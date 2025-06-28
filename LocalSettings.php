@@ -291,7 +291,7 @@ wfLoadExtension( 'UniversalLanguageSelector' );		// Anhängigkeit für Translate
 wfLoadExtension( 'Translate' );      // Übersetzungs-Extension, die auch die MediaWiki-UI übersetzt
 wfLoadExtension('CookieConsent'); // Cookie-Zustimmung für DSGVO-konforme Nutzung
 wfLoadExtension( 'MobileFrontend' ); // Mobile Frontend für die Nutzung auf mobilen Geräten
-
+wfLoadExtension( 'MassMessage' ); // Massenbenachrichtigungen an Benutzergruppen
 
 /** Hooks
  * Diese Einstellungen laden die verschiedenen Hooks, die für das Wiki verfügbar sind.
@@ -373,6 +373,12 @@ $wgApprovedRevsEnableAutoOnEditToNew = true;      // Automatische Freigabe der l
 $wgApprovedRevsUseVisualEditor = true;
 $wgApprovedRevsUseVisualEditorOnEdit = true;      // VisualEditor beim Bearbeiten verwenden
 $wgApprovedRevsUseVisualEditorOnMove = true;      // VisualEditor beim Verschieben verwenden
+
+/** MassMesage
+ * Einstellung für die Massenbenachrichtigungen
+ */
+$wgMassMessageAccountUsername = 'HERMES'; // Der Benutzername des Kontos, das für Massenbenachrichtigungen verwendet wird. 
+
 
 /** NAMESPACES 
  * Definition zusätzlichen Namensräume und Alias
@@ -592,6 +598,7 @@ $wgUserMergeProtectedGroups = [ 'sysop' ];			// Admins können nicht gemerged we
 $wgGroupPermissions['sysop']['whoiswatching'] = true;		// Beobachtungsliste anzeigen
 $wgGroupPermissions['sysop']['approverevisions'] = true;	// Genehmigte Versionen freigeben
 $wgGroupPermissions['sysop']['interwiki'] = true;		// Interwiki-Verwaltung
+$wgGroupPermissions['sysop']['massmessage'] = true;		// Massenbenachrichtigungen versenden
 
 
 
