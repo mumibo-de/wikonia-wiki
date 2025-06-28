@@ -6,8 +6,8 @@
  * * Diese Version ist für die Produktionsumgebung gedacht und enthält
  *   Sicherheits- und Konfigurationseinstellungen, die für den Betrieb des Wikis
  *  erforderlich sind.
- * Produktivversion ab 2025-06-16
- * Git-Tag: v0.5
+ * Produktivversion ab 2025-06-28
+ * Git-Tag: v0.6
  */
 
 
@@ -16,8 +16,8 @@
  * Diese Einstellungen sind nur für die Entwicklungsumgebung gedacht.
  * In der Produktionsumgebung sollten sie deaktiviert sein,
  */
- ##error_reporting(E_ALL);
- ##ini_set("display_errors", 1);
+# error_reporting(E_ALL);
+# ini_set("display_errors", 1);
 
 
 /** Schutzmechanismen und Universalisierung der LocalSettings
@@ -295,6 +295,12 @@ wfLoadExtension( 'MassMessage' ); // Massenbenachrichtigungen an Benutzergruppen
 wfLoadExtension( 'Popups' ); // Popups für Links zu anderen Seiten, um die Benutzererfahrung zu verbessern
 wfLoadExtension( 'PageImages' ); // Automatische Generierung von Seitenbildern für Artikel
 wfLoadExtension( 'HeaderTabs' ); // Registerkarten-Darstellung für die Navigation zwischen verschiedenen Seiten und Funktionen
+wfLoadExtension( 'NamespaceRelations' ); // Erweiterung für die Darstellung von Beziehungen zwischen Namensräumen
+
+
+
+
+
 /** Hooks
  * Diese Einstellungen laden die verschiedenen Hooks, die für das Wiki verfügbar sind.
  * Hooks ermöglichen es, das Verhalten von MediaWiki zu ändern, ohne den Quellcode zu ändern.
@@ -422,13 +428,13 @@ $wgNamespacesWithSubpages[NS_PORTAL] = true; // Portal kann Unterseiten haben
 
 
 
-define("NS_ECHO", 301);
-define("NS_ECHO_TALK", 302);
+define("NS_ECHO", 300);
+define("NS_ECHO_TALK", 301);
 $wgExtraNamespaces[NS_ECHO] = "Echo";
 $wgExtraNamespaces[NS_ECHO_TALK] = "Echo_Diskussion";
 
-define("NS_PROBLEME", 303);
-define("NS_PROBLEME_TALK", 304);
+define("NS_PROBLEME", 302);
+define("NS_PROBLEME_TALK", 303);
 $wgExtraNamespaces[NS_PROBLEME] = "Probleme";
 $wgExtraNamespaces[NS_PROBLEME_TALK] = "Probleme_Diskussion";
 
@@ -538,6 +544,37 @@ $wgNamespaceAliases += [
     NS_TEAM,
     NS_INTERN,
   ];
+
+  /** NamespaceRelarions
+   * Diese Einstellung ermöglicht die Anzeige von Beziehungen zwischen Namensräumen.
+   */
+ 
+   $wgNamespaceRelations = [
+ /*   'echo' => [
+      'namespace' => 0, // NS_MAIN
+      'target' => 300, // NS_ECHO
+      'inMainPage' => false,
+      'weight' => 12, // Gewichtung für die Anzeige in der Seitenleiste
+      'hideTalk' => false // Diskussionsseite anzeigen
+    ],
+    'problems' => [
+      'namespace' => 0, // NS_MAIN
+      'target' => 302, // NS_PROBLEME
+      'inMainPage' => false,
+      'weight' => 14, // Gewichtung für die Anzeige in der Seitenleiste
+      'hideTalk' => false // Diskussionsseite anzeigen
+    ],
+    */
+    'documentation' => [
+      'namespace' => 10, // NS_TEMPLATE
+      'target' => 10,
+      'customTarget' => '$1/Doku',
+      'weight' => 15, // Gewichtung für die Anzeige in der Seitenleiste
+      'hideTalk' => false // Diskussionsseite ausblenden
+    ]
+
+  ];
+
 
   /** 
    * Footer Links
