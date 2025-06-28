@@ -292,6 +292,7 @@ wfLoadExtension( 'Translate' );      // Übersetzungs-Extension, die auch die Me
 wfLoadExtension('CookieConsent'); // Cookie-Zustimmung für DSGVO-konforme Nutzung
 wfLoadExtension( 'MobileFrontend' ); // Mobile Frontend für die Nutzung auf mobilen Geräten
 wfLoadExtension( 'MassMessage' ); // Massenbenachrichtigungen an Benutzergruppen
+wfLoadExtension( 'Popups' ); // Popups für Links zu anderen Seiten, um die Benutzererfahrung zu verbessern
 
 /** Hooks
  * Diese Einstellungen laden die verschiedenen Hooks, die für das Wiki verfügbar sind.
@@ -379,6 +380,7 @@ $wgApprovedRevsUseVisualEditorOnMove = true;      // VisualEditor beim Verschieb
  */
 $wgMassMessageAccountUsername = 'HERMES'; // Der Benutzername des Kontos, das für Massenbenachrichtigungen verwendet wird. 
 $wgNamespacesToConvert = [ NS_USER => NS_USER_TALK ]; // Konvertiert Benutzernamensräume in Diskussionsseiten, um die Einschreibung zu erleichtern.
+$wgMassMessageAccountAllowedTargetNamespaces = [ NS_USER_TALK ];
 
 /** NAMESPACES 
  * Definition zusätzlichen Namensräume und Alias
