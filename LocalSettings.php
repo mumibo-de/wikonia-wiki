@@ -624,6 +624,9 @@ $wgGroupPermissions['sysop']['massmessage'] = true;		// Massenbenachrichtigungen
 $wgGroupPermissions['bureaucrat']['usermerge'] = true; 		// eBenutzer-Accounts zusammenlegen/löschen
 $wgGroupPermissions['bureaucrat']['userrights'] = true;		// Benutzerrechte verwalten
 $wgGroupPermissions['bureaucrat']['lockdown'] = true;		// Lockdown verwalten
+$wgGroupPermissions['sysop']['renameuser'] = true;    // Benutzer umbenennen
+
+/* Zusatzrechte, die eigentlich anderen Gruppen zugeornet wären (werden nach genauer Definition der Gruppen entfernt) */
 $wgGroupPermissions['bureaucrat']['checkuser'] = true;		// Checkuser-Rechte als Bürokrat
 $wgGroupPermissions['bureaucrat']['hideuser'] = true;     // Benutzer verbergen
 $wgGroupPermissions['bureaucrat']['deleterevision'] = true; // Revisionen löschen
