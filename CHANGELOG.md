@@ -1,9 +1,18 @@
 # Wikonia-Changelog
 
+## Version 0.6
+Status: intern stabil nicht öffentlich
+Datum: 2025-06-28
+* Installation der Extension: HeaderTabs [T81](https://phorge.wikonia.net/T81)
+* Installation der Extension: PageImages [T98](https://phorge.wikonia.net/T98)
+* Installation der Extension:Popups -> [T43](https://phorge.wikonia.net/T43)
+* Installation und Konfiguration der Extension:MassMessage -> [T41](https://phorge.wikonia.net/T41)
+* Neue Benutzergruppe "Confirmed" hinzugefügt, Rechte = "Autoconfirmed"-Gruppe. -> [T66](https://phorge.wikonia.net/T66)
+
 ## Version 0.5
 Status: intern stabil, nicht öffentlich
 Datum: 2025-06-16
-* Integration MobileFRontend -> Reaktivierung Miberva Neue (Vorübergehend, bis eigene Anpassungen für MobileDevices geschaffen wurden)
+* Integration MobileFrontend -> Reaktivierung Miberva Neue (Vorübergehend, bis eigene Anpassungen für MobileDevices geschaffen wurden)
 * Austausch nach Redesign des Square-Logos (Asset) für optimierte Darstelllung im Vector 2010 Skin
 * Standard-Skin auf Vector-2022 festgelegt
 
