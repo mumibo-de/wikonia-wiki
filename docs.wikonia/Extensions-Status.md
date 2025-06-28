@@ -45,6 +45,10 @@
 | **WhoIsWatching** | Anzeige der Beobachterliste | T76 (Rechteprüfung)             |
 | **CookieConsent** | Cookie-Einstellungen (EU)   | Texte müssen noch angepasst werden |
 | **MobileFrontend**| Verbesserte Darstellung mobil | Vorläufig mit alternativem Skin |
+| **MassMessage**   | Systemweite Benachrichtigungen         | T41         |
+| **Popups**        | Vorschau bei Hover über Links          | T82         |
+| **PageImages**    | Generieren von Vorschaubildern (u.a für Popuos) | T98 |
+| **HeaderTabs**    | Registerkarten-Darstellung             | T81         |
 
 ---
 
@@ -52,12 +56,9 @@
 
 | Extension         | Zweck                                  | Ticket      |
 |-------------------|----------------------------------------|-------------|
-| **MassMessage**   | Systemweite Benachrichtigungen         | T41         |
-| **RenameUser**    | Umbenennen von Benutzerkonten          | T77         |
 | **Moderation**    | Vorschaltkontrolle für neue Benutzer/IPs | T79         |
-| **HeaderTabs**    | Registerkarten-Darstellung             | T81         |
-| **Popups**        | Vorschau bei Hover über Links          | T82         |
 | **ShortDescription** | Meta-Beschreibung für SEO/Übersicht | T83         |
+| **NamespaceRealtions** | Darstellung weiter NS als Tabs      | T99          |
 
 ---
 
@@ -81,4 +82,5 @@
 | **EmailLogger**     | Für den Einsatzzweck irrelevant                              |
 | **NewSignupPage**   | Durch eigene Lösung/Workaround ersetzt                       |
 | **CookieBanner**    | Durch CookieConsent abgelöst                                 |
+| **RenameUser**    | Obsoloet, siet MW 1.40 im Core -> T77          |
 
