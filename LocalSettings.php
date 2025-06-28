@@ -294,7 +294,7 @@ wfLoadExtension( 'MobileFrontend' ); // Mobile Frontend für die Nutzung auf mob
 wfLoadExtension( 'MassMessage' ); // Massenbenachrichtigungen an Benutzergruppen
 wfLoadExtension( 'Popups' ); // Popups für Links zu anderen Seiten, um die Benutzererfahrung zu verbessern
 wfLoadExtension( 'PageImages' ); // Automatische Generierung von Seitenbildern für Artikel
-
+wfLoadExtension( 'HeaderTabs' ); // Registerkarten-Darstellung für die Navigation zwischen verschiedenen Seiten und Funktionen
 /** Hooks
  * Diese Einstellungen laden die verschiedenen Hooks, die für das Wiki verfügbar sind.
  * Hooks ermöglichen es, das Verhalten von MediaWiki zu ändern, ohne den Quellcode zu ändern.
@@ -397,6 +397,16 @@ $wgMassMessageAccountAllowedTargetNamespaces = [ NS_USER_TALK ];
 		'db' => false,
 	]
 ];
+
+
+/** HeaderTabs
+ * Diese Einstellungen sind für die Registerkarten-Darstellung erforderlich,
+ * um die Navigation zwischen verschiedenen Seiten und Funktionen zu erleichtern.
+ */
+
+$wgHeaderTabsNoTabsInToc = true; // Deaktiviert die Registerkarten im Inhaltsverzeichnis, um die Benutzeroberfläche zu vereinfachen.
+$wgHeaderTabsEditTabLink = false; // Deaktiviert den Bearbeiten-Tab, um die Benutzeroberfläche zu vereinfachen.
+
 
 /** NAMESPACES 
  * Definition zusätzlichen Namensräume und Alias
