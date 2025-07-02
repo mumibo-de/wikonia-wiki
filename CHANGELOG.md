@@ -1,5 +1,18 @@
 # Wikonia-Changelog
 
+## Version 0.7
+Status: intern stabil nicht öffentlich
+Datum: 2025-07-02
+
+* ImageMagick-Integration / Upload-Limit: [T37](https://phorge.wikonia.net/T37)
+  * Upload-Limit für Bilder im Apache/PHP und MediaWiki auf 20 MB erhöht [T140](https://phorge.wikonia.net/T140)
+  * NGINX client_max_body_size gesetzt [T141](https://phorge.wikonia.net/T141)
+  * ImageMagick installiert und aktiviert, Thumbnails werden korrekt generiert
+* ReCAPTCHA-Integration über ConfirmEdit: [T70](https://phorge.wikonia.net/T70)
+  * Fehlerhafte ConfirmEdit-Konfiguration (Namespace, Keys, Variablen) korrigiert
+  * Google reCAPTCHA v2 mit korrektem Namespace und funktionierenden API-Keys aktiviert
+  * Captcha-Feld erscheint und funktioniert auf Anmeldeseite
+
 ## Version 0.6
 Status: intern stabil nicht öffentlich
 Datum: 2025-06-28

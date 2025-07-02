@@ -6,8 +6,8 @@
  * * Diese Version ist für die Produktionsumgebung gedacht und enthält
  *   Sicherheits- und Konfigurationseinstellungen, die für den Betrieb des Wikis
  *  erforderlich sind.
- * Produktivversion ab 2025-06-28
- * Git-Tag: v0.6.1
+ * Produktivversion ab 2025-07-02
+ * Git-Tag: v0.7
  */
 
 
@@ -188,8 +188,8 @@ $wgUpgradeKey = $mySecrets['UpgradeKey'];  // Ein Schlüssel, der für die Aktua
  */
 
 $wgEnableUploads = true;  // Ermöglicht das Hochladen von Bildern und Dateien ins Wiki.
-#$wgUseImageMagick = true;
-#$wgImageMagickConvertCommand = "/usr/bin/convert";
+$wgUseImageMagick = true;
+$wgImageMagickConvertCommand = "/usr/bin/convert";
 
 $wgUseInstantCommons = true; // Ermöglicht die Verwendung von Bildern aus Wikimedia Commons, um Speicherplatz zu sparen und die Nutzung von Medien zu erleichtern.
 
