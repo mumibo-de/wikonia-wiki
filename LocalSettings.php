@@ -244,6 +244,7 @@ wfLoadExtension( 'Cite' );
 wfLoadExtension( 'CiteThisPage' );
 wfLoadExtension( 'CodeEditor' );
 wfLoadExtension( 'ConfirmEdit' );
+wfLoadExtension( 'ConfirmEdit/ReCaptchaNoCaptcha' );
 wfLoadExtension( 'DiscussionTools' );
 wfLoadExtension( 'Echo' );
 wfLoadExtension( 'Gadgets' );
@@ -412,6 +413,30 @@ $wgMassMessageAccountAllowedTargetNamespaces = [ NS_USER_TALK ];
 
 $wgHeaderTabsNoTabsInToc = true; // Deaktiviert die Registerkarten im Inhaltsverzeichnis, um die Benutzeroberfläche zu vereinfachen.
 $wgHeaderTabsEditTabLink = false; // Deaktiviert den Bearbeiten-Tab, um die Benutzeroberfläche zu vereinfachen.
+
+/** ConfirmEdit
+ * Diese Einstellungen sind für die ReCaptcha-Integration erforderlich,
+ * um Spam und Missbrauch im Wiki zu verhindern.
+ */
+$wgCaptchaClass = 'MediaWiki\\Extension\\ConfirmEdit\\ReCaptchaNoCaptcha\\ReCaptchaNoCaptcha';
+ // Setzt die Klasse für die Captcha-Integration auf ReCaptcha NoCaptcha.
+$wgReCaptchaSiteKey = $mySecrets['recaptcha_public_key']; // Der öffentliche Schlüssel für ReCaptcha, der in der secrets.php definiert ist. 
+$wgReCaptchaSecretKey = $mySecrets['recaptcha_private_key']; // Der private Schlüssel für ReCaptcha, der in der secrets.php definiert ist.
+
+$wgCaptchaTriggers['edit'] = false;
+$wgCaptchaTriggers['create'] = true;
+$wgCaptchaTriggers['sendemail'] = true;
+$wgCaptchaTriggers['addurl'] = true;
+$wgCaptchaTriggers['createaccount'] = true;
+$wgCaptchaTriggers['badlogin'] = true;
+$wgCaptchaTriggers['badloginperuser'] = true;
+
+$wgCaptchaBadLoginAttempts = 3;
+$wgCaptchaBadLoginExpiration = 300; // 300 seconds = 5 minutes
+$wgCaptchaBadLoginPerUserAttempts = 20;
+$wgCaptchaBadLoginPerUserExpiration = 600; // 600 seconds = 10 minutes
+
+$wgReCaptchaTheme = 'light'; // Setzt das ReCaptcha-Thema auf "light", um eine helle Darstellung zu verwenden.
 
 
 /** NAMESPACES 
@@ -647,6 +672,7 @@ $wgAutoConfirmCount = 15; // 15 Bearbeitungen
 $wgGroupPermissions['autoconfirmed']['editprotected'] = true;	// Autokonfirmierte Benutzer können geschützte Seiten bearbeiten
 $wgGroupPermissions['autoconfirmed']['upload'] = true;		// Autokonfirmierte Benutzer können Dateien hochladen
 $wgGroupPermissions['autoconfirmed']['reupload'] = true;	// Autokonfirmierte Benutzer können Dateien überschreiben
+$wgGroupPermissions['autoconfirmed']['skipcaptcha'] = true; // Autokonfirmierte Benutzer können Captchas überspringen
 
 /** Benutzerrechte (confirmed) 
  * Entspricht im Wesentlichen der Gruppe "Autoconfirmed",
@@ -656,7 +682,10 @@ $wgGroupPermissions['autoconfirmed']['reupload'] = true;	// Autokonfirmierte Ben
 $wgGroupPermissions['confirmed']['editprotected'] = true;	// Autokonfirmierte Benutzer können geschützte Seiten bearbeiten
 $wgGroupPermissions['confirmed']['upload'] = true;		// Autokonfirmierte Benutzer können Dateien hochladen
 $wgGroupPermissions['confirmed']['reupload'] = true;	// Autokonfirmierte Benutzer können Dateien überschreiben
+$wgGroupPermissions['confirmed']['skipcaptcha'] = true; // Autokonfirmierte Benutzer können Captchas überspringen
 
+/** Benutzerrechte (Bot) */
+$wgGroupPermissions['bot']['skipcaptcha'] = true; // Bots können Captchas überspringen
 
 ## Admins (sysop) ##
 $wgUserMergeProtectedGroups = [ 'sysop' ];			// Admins können nicht gemerged werden
@@ -664,6 +693,7 @@ $wgGroupPermissions['sysop']['whoiswatching'] = true;		// Beobachtungsliste anze
 $wgGroupPermissions['sysop']['approverevisions'] = true;	// Genehmigte Versionen freigeben
 $wgGroupPermissions['sysop']['interwiki'] = true;		// Interwiki-Verwaltung
 $wgGroupPermissions['sysop']['massmessage'] = true;		// Massenbenachrichtigungen versenden
+
 
 
 
