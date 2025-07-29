@@ -297,7 +297,7 @@ wfLoadExtension( 'Popups' ); // Popups für Links zu anderen Seiten, um die Benu
 wfLoadExtension( 'PageImages' ); // Automatische Generierung von Seitenbildern für Artikel
 wfLoadExtension( 'HeaderTabs' ); // Registerkarten-Darstellung für die Navigation zwischen verschiedenen Seiten und Funktionen
 wfLoadExtension( 'NamespaceRelations' ); // Erweiterung für die Darstellung von Beziehungen zwischen Namensräumen
-wfLoadExtension( 'UploadWizard' ); // Erweiterung für den Upload von Dateien mit einem benutzerfreundlichen Assistenten
+#wfLoadExtension( 'UploadWizard' ); // Erweiterung für den Upload von Dateien mit einem benutzerfreundlichen Assistenten
 
 
 
@@ -406,11 +406,14 @@ $wgMassMessageAccountAllowedTargetNamespaces = [ NS_USER_TALK ];
 	]
 ];
 
+
+
 /** UploadWizzard
  * Diese Einstellungen sind für den Upload-Assistenten erforderlich,
  * um den Benutzern das Hochladen von Dateien zu erleichtern.
  */
 # === UploadWizard-Konfiguration für Wikonia ===
+/*
 $wgUploadWizardConfig = [
     'debug' => false,
 
@@ -451,6 +454,7 @@ $wgUploadNavigationUrl = "$wgScriptPath/Spezial:UploadWizard";
 
 /* Lizenzkonfiguration für den Upload-Assistenten */
 // Diese Lizenzen werden Costum-Templates zugeordnet, da sie nicht in der Standard-Lizenzliste von MediaWiki enthalten sind.
+/*
 $wgUploadWizardConfig['licenses']['copy-mumibo'] = [
     'msg' => 'license-copy-mumibo',
     'templates' => [ 'copy-mumibo' ],
@@ -466,8 +470,8 @@ $wgUploadWizardConfig['licenses']['dateiüberprüfung'] = [
     'templates' => [ 'subst:Dateiüberprüfung' ],
     'icons' => [ 'unknown' ]
 ];
-
-
+*/
+/*
 // Steuerung der Lizenzgruppen und -typen
 $wgUploadWizardConfig['licensing'] = [
 	'defaultType' => 'choice',
@@ -521,7 +525,7 @@ $wgUploadWizardConfig['licensing'] = [
 	]
 ];
 
-
+*/
 
 
 /** HeaderTabs
