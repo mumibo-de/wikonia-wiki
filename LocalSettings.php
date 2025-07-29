@@ -297,6 +297,7 @@ wfLoadExtension( 'Popups' ); // Popups für Links zu anderen Seiten, um die Benu
 wfLoadExtension( 'PageImages' ); // Automatische Generierung von Seitenbildern für Artikel
 wfLoadExtension( 'HeaderTabs' ); // Registerkarten-Darstellung für die Navigation zwischen verschiedenen Seiten und Funktionen
 wfLoadExtension( 'NamespaceRelations' ); // Erweiterung für die Darstellung von Beziehungen zwischen Namensräumen
+wfLoadExtension( 'UploadWizard' ); // Erweiterung für den Upload von Dateien mit einem benutzerfreundlichen Assistenten
 
 
 
@@ -404,6 +405,50 @@ $wgMassMessageAccountAllowedTargetNamespaces = [ NS_USER_TALK ];
 		'db' => false,
 	]
 ];
+
+/** UploadWizzard
+ * Diese Einstellungen sind für den Upload-Assistenten erforderlich,
+ * um den Benutzern das Hochladen von Dateien zu erleichtern.
+ */
+# === UploadWizard-Konfiguration für Wikonia ===
+$wgUploadWizardConfig = [
+    'debug' => false,
+
+    // Automatischer Zusatz beim Upload
+    'autoAdd' => [
+        'wikitext' => [ '{{subst:AutoBeschreibung}}' ], // Automatischer Zusatz in der Beschreibung
+        'categories' => [ 'Upload-Wizard' ], // Kategorien, die automatisch hinzugefügt werden
+    ],
+
+    // Unerwünschte Commons-Verweise abschalten
+    'feedbackLink' => false,
+    'alternativeUploadToolsPage' => false,
+
+    // Mehrfach-Upload & Drag-and-Drop
+    'enableFormData' => true,
+    'enableMultipleFiles' => true,
+    'enableMultiFileSelect' => true,
+
+    // Sprachen im Beschreibungsteil
+    'uwLanguages' => [
+        'de' => 'Deutsch',
+        'en' => 'English'
+    ],
+
+    // Tutorial zeigen, aber nur beim ersten Mal
+    'tutorial' => [ 'skip' => true ],
+
+    // Begrenzung der Uploads pro Vorgang
+    'maxUploads' => 15,
+
+    // Nur erlaubte Dateitypen (Verknüpfung mit globaler Whitelist)
+    'fileExtensions' => $wgFileExtensions,
+
+    // Flickr-Import deaktivieren
+    'flickr' => false
+];
+$wgUploadNavigationUrl = "$wgScriptPath/Spezial:UploadWizard";
+// Setzt die URL für die Upload-Seite, die im Upload-Assistenten verwendet wird.
 
 
 /** HeaderTabs
