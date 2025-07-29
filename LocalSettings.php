@@ -6,8 +6,8 @@
  * * Diese Version ist für die Produktionsumgebung gedacht und enthält
  *   Sicherheits- und Konfigurationseinstellungen, die für den Betrieb des Wikis
  *  erforderlich sind.
- * Produktivversion ab 2025-07-02
- * Git-Tag: v0.7
+ * Produktivversion ab 2025-07-29
+ * Git-Tag: v0.8
  */
 
 

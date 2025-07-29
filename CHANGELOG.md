@@ -1,5 +1,11 @@
 # Wikonia-Changelog
 
+## Version 0.8
+Status: intern stabil nicht öffentlich
+Datum: 2025-07-29
+* Installation der Extension UploadWizzard [T155](https://phorge.wikonia.net/T115)
+* Asset FontAwesome wurde final hinzugefügt (nicht bestandteil des Repos)
+
 ## Version 0.7
 Status: intern stabil nicht öffentlich
 Datum: 2025-07-02
