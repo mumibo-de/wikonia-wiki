@@ -28,6 +28,9 @@ docs/
 vendor/
 tests/
 
+# 1.a eigene Anpassungen und Includes
+!custom/*
+
 # 2. Beispiel- oder Setup-Dateien von MediaWiki
 *.sample
 *-sample

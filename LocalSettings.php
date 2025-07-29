@@ -448,7 +448,80 @@ $wgUploadWizardConfig = [
     'flickr' => false
 ];
 $wgUploadNavigationUrl = "$wgScriptPath/Spezial:UploadWizard";
-// Setzt die URL für die Upload-Seite, die im Upload-Assistenten verwendet wird.
+
+/* Lizenzkonfiguration für den Upload-Assistenten */
+// Diese Lizenzen werden Costum-Templates zugeordnet, da sie nicht in der Standard-Lizenzliste von MediaWiki enthalten sind.
+$wgUploadWizardConfig['licenses']['copy-mumibo'] = [
+    'msg' => 'license-copy-mumibo',
+    'templates' => [ 'copy-mumibo' ],
+    'icons' => [ 'cc-by' ], // oder eigenes Icon
+];
+$wgUploadWizardConfig['licenses']['copy-mumibo-cc-by-sa-4.0'] = [
+    'msg' => 'wikonia-license-copy-mumibo-cc-by-sa-4.0',
+    'templates' => [ 'copy-mumibo-cc-by-sa-4.0' ],
+    'icons' => [ 'cc-by-sa' ], // oder eigenes Icon
+];
+$wgUploadWizardConfig['licenses']['dateiüberprüfung'] = [
+    'msg' => 'wikonia-license-dateiueberpruefung',
+    'templates' => [ 'subst:Dateiüberprüfung' ],
+    'icons' => [ 'unknown' ]
+];
+
+
+// Steuerung der Lizenzgruppen und -typen
+$wgUploadWizardConfig['licensing'] = [
+	'defaultType' => 'choice',
+	'ownWorkDefault' => 'choice',
+	'ownWork' => [
+		'type' => 'or',
+		'template' => 'self',
+		'licenses' => [
+			'cc-by-sa-4.0',
+			'cc-by-4.0',
+			'cc-zero'
+		]
+	],
+	'thirdParty' => [
+		'type' => 'or',
+		'licenseGroups' => [
+			[
+				'head' => 'mwe-upwiz-license-cc0-head',
+        					'head-extra' => 'mwe-upwiz-license-cc0-head-extra',
+					'subhead' => 'mwe-upwiz-license-cc0-subhead-2',
+					'subhead-extra' => 'mwe-upwiz-license-cc0-subhead-extra',
+					'icons' => [ 'cc-public-domain' ],
+				'licenses' => [
+					'pd-old',
+					'pd-old-100',
+          'pd-ineligible',
+          'pd-textlogo',
+          'unsure'
+				]
+			],
+      [
+					'head' => 'mwe-upwiz-license-unknown-head',
+					'subhead' => 'mwe-upwiz-license-unknown-subhead',
+					'url' => [
+						'//commons.wikimedia.org/wiki/Commons:Licensing#Acceptable_licenses',
+						'//commons.wikimedia.org/wiki/Commons:Licensing#Material_in_the_public_domain',
+						'//commons.wikimedia.org/wiki/Commons:Licensing',
+						'//commons.wikimedia.org/wiki/Commons:Village_pump/Copyright',
+					],
+					'defaults' => [ 'none' ],
+					'licenses' => [ 'unknown' ],
+				],
+			[
+				'head' => 'wikonia-license-group-auftrag',
+				'licenses' => [
+					'copy-mumibo',
+					'copy-mumibo-cc-by-sa-4.0'
+				]
+			]
+		]
+	]
+];
+
+
 
 
 /** HeaderTabs
