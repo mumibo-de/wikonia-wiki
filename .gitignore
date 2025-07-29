@@ -53,7 +53,10 @@ extensions/*
 skins/*
 !skins/WikoniaSkin/
 
-# 5. Lokale Dateien und Editoren
+# 5. Assets (außer eigene)
+wikonia-assets/fonts/fontawesome-free/
+
+# 6. Lokale Dateien und Editoren
 .vscode/
 .idea/
 *.log
@@ -64,20 +67,20 @@ skins/*
 .DS_Store
 Thumbs.db
 
-# 6. Git-Altlasten und Readme aus Extensions
+# 7. Git-Altlasten und Readme aus Extensions
 **/.git
 **/README.md
 !/README.md
 !/wikonia-assets/**/*.md
 !CHANGELOG.md
 
-# 7. Docker (nur lokal für Dev)
+# 8. Docker (nur lokal für Dev)
 docker-compose.yml
 docker-compose.overide.yml
 Dockerfile
 .env
 
-# 8. Backup-Dateien oder temporäre Scripts
+# 9. Backup-Dateien oder temporäre Scripts
 *.old
 *.backup
 *.zip
@@ -89,18 +92,11 @@ dump.sql
 *.tmp
 *.bak~
 
-# 9. System-/Projektübergreifend
+# 10. System-/Projektübergreifend
 node_modules/
 tmp/
 cache/
 /images
 /vendor/
 /composer.lock
-
-
-
-# 10. LocalSettings, vor der Git-Versionierung
-LocalSettings.php-*
-LocalSettings.php.save*
-LocalSettings.php.bak*
 
