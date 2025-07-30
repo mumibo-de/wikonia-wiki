@@ -298,6 +298,7 @@ wfLoadExtension( 'PageImages' ); // Automatische Generierung von Seitenbildern f
 wfLoadExtension( 'HeaderTabs' ); // Registerkarten-Darstellung für die Navigation zwischen verschiedenen Seiten und Funktionen
 wfLoadExtension( 'NamespaceRelations' ); // Erweiterung für die Darstellung von Beziehungen zwischen Namensräumen
 #wfLoadExtension( 'UploadWizard' ); // Erweiterung für den Upload von Dateien mit einem benutzerfreundlichen Assistenten
+wfLoadExtension( 'MediaUploader' );
 
 
 
@@ -405,6 +406,58 @@ $wgMassMessageAccountAllowedTargetNamespaces = [ NS_USER_TALK ];
 		'db' => false,
 	]
 ];
+$wgMediaUploaderConfig['additionalMessages'] = [
+  'mediauploader-license-copy-mumibo',
+  'mediauploader-license-copy-mumibo-cc-by-sa-4.0',
+  'wikonia-license-head',
+  'license-pd-head'
+];
+
+
+$wgMediaUploaderConfig['licenses'] = [
+  'copy-mumibo' => [
+    'msg' => 'mediauploader-license-copy-mumibo',
+    'wikitext' => '{{copy-mumibo}}',
+    'icons' => [ 'copyright' ] // z. B. eigenes Icon im CSS (optional, siehe unten)
+  ],
+  'copy-mumibo-cc-by-sa-4.0' => [
+    'msg' => 'mediauploader-license-mumibo-CC-BY-SA-4.0',
+    'wikitext' => '{{copy-mumibo-cc-by-sa-4.0}}',
+    'icons' => [ 'cc-by', 'cc-sa' ]
+  ]
+];
+
+$wgMediaUploaderConfig['licensing']['ownWork'] = [
+  'type' => 'radio',
+  'defaults' => 'cc-by-sa-4.0',
+  'licenses' => [
+    'cc-by-sa-4.0',
+    'cc-by-4.0',
+    'cc-zero'
+  ]
+];
+
+$wgMediaUploaderConfig['licensing']['thirdParty'] = [
+  'type' => 'radio',
+  'licenseGroups' => [
+    [
+      'head' => 'mediauploader-license-custom-head',
+      'licenses' => [
+        'copy-mumibo',
+        'copy-mumibo-cc-by-sa-4.0'
+      ]
+    ],
+    [
+      'head' => 'mediauploader-license-none-head',
+      'licenses' => [
+        'pd-old',
+        'pd-ineligible'
+      ]
+    ]
+  ]
+];
+
+
 
 
 
