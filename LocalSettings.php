@@ -421,7 +421,7 @@ $wgMediaUploaderConfig['additionalMessages'] = [
   'license-pd-head'
 ];
 
-// Lizen für den MediaUploader
+// Lizenzen für den MediaUploader
 $wgMediaUploaderConfig['licenses'] = [
   'copy-mumibo' => [
     'msg' => 'mediauploader-license-copy-mumibo',
@@ -443,7 +443,8 @@ $wgMediaUploaderConfig['licensing']['ownWork'] = [
     'cc-by-sa-4.0',
     'cc-by-4.0',
     'cc-zero'
-  ]
+  ],
+  'licenseWikitext' => '{{Lizenzierung|$2}}',
 ];
 
 // Lizenzen für die MediaUploader-Konfiguration in der Gruppe "thirdParty"
@@ -464,8 +465,10 @@ $wgMediaUploaderConfig['licensing']['thirdParty'] = [
         'pd-ineligible'
       ]
     ]
-  ]
+  ],
+  'licenseWikitext' => '{{Lizenzierung|$2}}',
 ];
+
 
 
 /** HeaderTabs
