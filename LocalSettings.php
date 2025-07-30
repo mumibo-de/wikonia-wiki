@@ -7,7 +7,7 @@
  *   Sicherheits- und Konfigurationseinstellungen, die für den Betrieb des Wikis
  *  erforderlich sind.
  * Produktivversion ab 2025-07-29
- * Git-Tag: v0.8
+ * Git-Tag: v0.9
  */
 
 

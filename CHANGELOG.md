@@ -1,5 +1,11 @@
 # Wikonia-Changelog
 
+## Version 0.9
+Status: intern stabil nicht öffentlich
+Datum: 2025-07-30
+* Alternative: Installation MediaUploader [T155](https://phorge.wikonia.net/T115)
+* Entfernen des UploadWizards, siehe Dokumentation und Probleme unter [T155](https://phorge.wikonia.net/T115)
+
 ## Version 0.8
 Status: intern stabil nicht öffentlich
 Datum: 2025-07-29
