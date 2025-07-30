@@ -16,9 +16,9 @@
  * Diese Einstellungen sind nur für die Entwicklungsumgebung gedacht.
  * In der Produktionsumgebung sollten sie deaktiviert sein,
  */
-# error_reporting(E_ALL);
-# ini_set("display_errors", 1);
-
+ #error_reporting(E_ALL);
+ #ini_set("display_errors", 1);
+ #$wgShowExceptionDetails = true;
 
 /** Schutzmechanismen und Universalisierung der LocalSettings
  * Diese Datei ist die zentrale Konfigurationsdatei für das Produduktiv-Wiki.
@@ -301,8 +301,6 @@ wfLoadExtension( 'MediaUploader' );
 
 
 
-
-
 /** Hooks
  * Diese Einstellungen laden die verschiedenen Hooks, die für das Wiki verfügbar sind.
  * Hooks ermöglichen es, das Verhalten von MediaWiki zu ändern, ohne den Quellcode zu ändern.
@@ -405,6 +403,17 @@ $wgMassMessageAccountAllowedTargetNamespaces = [ NS_USER_TALK ];
 		'db' => false,
 	]
 ];
+
+/** MediaUploader
+ * Diese Einstellungen sind für die MediaUploader-Erweiterung erforderlich,
+ * um das Hochladen von Mediendateien zu erleichtern.
+ */
+
+$wgUploadNavigationUrl = $wgScriptPath . '/index.php/Spezial:MediaUploader';  // Setzt die URL für die Upload-Navigation auf die MediaUploader-Spezialseite.
+
+$wgMediaUploaderConfig['tutorial']['wikitext'] = '{{MediaWiki:Mediauploader-tutorial-text}}'; // Setzt den Wikitext für das Tutorial im MediaUploader.
+
+// Zusätzle Nachrichten für den MediaUploader
 $wgMediaUploaderConfig['additionalMessages'] = [
   'mediauploader-license-copy-mumibo',
   'mediauploader-license-copy-mumibo-cc-by-sa-4.0',
@@ -412,12 +421,12 @@ $wgMediaUploaderConfig['additionalMessages'] = [
   'license-pd-head'
 ];
 
-
+// Lizen für den MediaUploader
 $wgMediaUploaderConfig['licenses'] = [
   'copy-mumibo' => [
     'msg' => 'mediauploader-license-copy-mumibo',
     'wikitext' => '{{copy-mumibo}}',
-    'icons' => [ 'copyright' ] // z. B. eigenes Icon im CSS (optional, siehe unten)
+    'icons' => [ 'copyright' ] // ggf durch eigenes Icon ersetzen?
   ],
   'copy-mumibo-cc-by-sa-4.0' => [
     'msg' => 'mediauploader-license-mumibo-CC-BY-SA-4.0',
@@ -426,6 +435,7 @@ $wgMediaUploaderConfig['licenses'] = [
   ]
 ];
 
+// Lizenzen für die MediaUploader-Konfiguration in der Gruppe "ownWork"
 $wgMediaUploaderConfig['licensing']['ownWork'] = [
   'type' => 'radio',
   'defaults' => 'cc-by-sa-4.0',
@@ -436,6 +446,7 @@ $wgMediaUploaderConfig['licensing']['ownWork'] = [
   ]
 ];
 
+// Lizenzen für die MediaUploader-Konfiguration in der Gruppe "thirdParty"
 $wgMediaUploaderConfig['licensing']['thirdParty'] = [
   'type' => 'radio',
   'licenseGroups' => [
@@ -689,7 +700,7 @@ $wgGroupPermissions['*']['read'] = true;			// Anonyme Benutzer können Seiten le
 $wgGroupPermissions['*']['createpage'] = true;		// Anonyme Benutzer können Seiten anlegen
 $wgGroupPermissions['*']['createtalk'] = true;		// Anonyme Benutzer können Diskussionsseiten anlegen
 $wgGroupPermissions['*']['writeapi'] = true;      // Anonyme Benutzer können die API zum Schreiben verwenden. Vorausetzung für den VisualEditor.
-$wgShowExceptionDetails = true;
+
 
 /** Temporäre Konten aktivieren */
 $wgAutoCreateTempUser['enabled'] = true;
