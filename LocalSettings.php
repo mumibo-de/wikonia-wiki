@@ -432,7 +432,56 @@ $wgMediaUploaderConfig['licenses'] = [
     'msg' => 'mediauploader-license-mumibo-CC-BY-SA-4.0',
     'wikitext' => '{{copy-mumibo-cc-by-sa-4.0}}',
     'icons' => [ 'cc-by', 'cc-sa' ]
+  ],
+  // Creative Commons Lizenzen überschreiben der Feldwerte
+  'cc-zero' => [
+  'msg' => 'mediauploader-license-cc-zero',
+  'icons' => [ 'cc-zero' ],
+  'url' => '//creativecommons.org/publicdomain/zero/1.0/',
+  'languageCodePrefix' => 'deed.',
+  'explainMsg' => 'mediauploader-source-ownwork-cc-zero-explain',
+  'wikitext' => '{{Lizenzierung|cc-zero}}'
+  ],
+  'cc-by-4.0' => [
+    'msg' => 'mediauploader-license-cc-by-4.0',
+    'icons' => [ 'cc-by' ],
+    'url' => '//creativecommons.org/licenses/by/4.0/',
+    'languageCodePrefix' => 'deed.',
+    'explainMsg' => 'mediauploader-source-ownwork-cc-by-4.0-explain',
+    'wikitext' => '{{Lizenzierung|cc-by-4.0}}'
+  ],
+  'cc-by-sa-4.0' => [
+    'msg' => 'mediauploader-license-cc-by-sa-4.0',
+    'icons' => [ 'cc-by', 'cc-sa' ],
+    'url' => '//creativecommons.org/licenses/by-sa/4.0/',
+    'languageCodePrefix' => 'deed.',
+    'explainMsg' => 'mediauploader-source-ownwork-cc-by-sa-4.0-explain',
+    'wikitext' => '{{Lizenzierung|cc-by-sa-4.0}}'
+  ],
+  // Public Domain Lizenzen
+  'pd-old' => [
+    'msg' => 'mediauploader-license-pd-old',
+    'icons' => [ 'pd-old' ],
+    'url' => '//en.wikipedia.org/wiki/Wikipedia:Public_domain/PD-old',
+    'languageCodePrefix' => 'deed.',
+    'explainMsg' => 'mediauploader-source-ownwork-pd-old-explain',
+    'wikitext' => '{{Lizenzierung|pd-old}}'
+  ],
+  'pd-ineligible' => [
+    'msg' => 'mediauploader-license-pd-ineligible',
+    'icons' => [ 'pd-ineligible' ],
+    'url' => '//en.wikipedia.org/wiki/Wikipedia:Public_domain/PD-ineligible',
+    'languageCodePrefix' => 'deed.',
+    'explainMsg' => 'mediauploader-source-ownwork-pd-ineligible-explain',
+    'wikitext' => '{{Lizenzierung|pd-ineligible}}'
   ]
+];
+
+$wgMediaUploaderConfig['licenses'] = [
+  // The full list of available licenses is too long to be included here.
+  // See the "Licenses available by default" section below.
+  // Example license:
+
 ];
 
 // Lizenzen für die MediaUploader-Konfiguration in der Gruppe "ownWork"
@@ -443,9 +492,9 @@ $wgMediaUploaderConfig['licensing']['ownWork'] = [
     'cc-by-sa-4.0',
     'cc-by-4.0',
     'cc-zero'
-  ],
-  'licenseWikitext' => '{{Lizenzierung|$2}}',
+  ]
 ];
+
 
 // Lizenzen für die MediaUploader-Konfiguration in der Gruppe "thirdParty"
 $wgMediaUploaderConfig['licensing']['thirdParty'] = [
@@ -465,9 +514,9 @@ $wgMediaUploaderConfig['licensing']['thirdParty'] = [
         'pd-ineligible'
       ]
     ]
-  ],
-  'licenseWikitext' => '{{Lizenzierung|$2}}',
+  ]
 ];
+
 
 
 
@@ -690,6 +739,11 @@ $wgNamespaceAliases += [
  * Cave: Anhängigkeiten beachten, soweit möglich als Kommentar angegeben.
  */
 
+/* Zusätzliche Schutzstufen */
+$wgRestrictionLevels[] = 'templateprotection'; // Schutz für sensible Vorlagen und Module
+$wgRestrictionLevels[] = 'policyprotection'; // Schutz für Richtlinien und wichtige Seiten
+
+
  /* Lockdown */
 $wgSpecialPageLockdown['Version'] = [ 'sysop' ]; // Nur Admins dürfen Spezialseite "Version" sehen
 $wgNamespacePermissionLockdown[NS_TEAM]['read'] = [ 'sysop' ]; // Nur Admins dürfen den Team-Namensraum lesen
@@ -752,21 +806,26 @@ $wgGroupPermissions['confirmed']['skipcaptcha'] = true; // Autokonfirmierte Benu
 /** Benutzerrechte (Bot) */
 $wgGroupPermissions['bot']['skipcaptcha'] = true; // Bots können Captchas überspringen
 
+/** Vorlagen-Meister (tempplatemaster) */
+$wgGroupPermissions['templatemaster']['templateprotection'] = true; // Vorlagen-Meister können Vorlagen bearbeiten.
+
+/** Policy-Editor (policyeditor) */
+$wgGroupPermissions['policyeditor']['policyprotection'] = true; // Policy-Editor können Richtlinien bearbeiten.
+
 ## Admins (sysop) ##
 $wgUserMergeProtectedGroups = [ 'sysop' ];			// Admins können nicht gemerged werden
 $wgGroupPermissions['sysop']['whoiswatching'] = true;		// Beobachtungsliste anzeigen
 $wgGroupPermissions['sysop']['approverevisions'] = true;	// Genehmigte Versionen freigeben
 $wgGroupPermissions['sysop']['interwiki'] = true;		// Interwiki-Verwaltung
 $wgGroupPermissions['sysop']['massmessage'] = true;		// Massenbenachrichtigungen versenden
-
-
-
+$wgGroupPermissions['sysop']['templateprotection'] = true;  // Vorlagen-Schutz verwalten
 
 ## Bürokraten (bureaucrat) ##
 $wgGroupPermissions['bureaucrat']['usermerge'] = true; 		// eBenutzer-Accounts zusammenlegen/löschen
 $wgGroupPermissions['bureaucrat']['userrights'] = true;		// Benutzerrechte verwalten
 $wgGroupPermissions['bureaucrat']['lockdown'] = true;		// Lockdown verwalten
 $wgGroupPermissions['sysop']['renameuser'] = true;    // Benutzer umbenennen
+$wgGroupPermissions['bureaucrat']['policyprotection'] = true; // Richtlinien-Schutz verwalten
 
 /* Zusatzrechte, die eigentlich anderen Gruppen zugeornet wären (werden nach genauer Definition der Gruppen entfernt) */
 $wgGroupPermissions['bureaucrat']['checkuser'] = true;		// Checkuser-Rechte als Bürokrat
