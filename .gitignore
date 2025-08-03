@@ -69,6 +69,8 @@ wikonia-assets/fonts/fontawesome-free/
 *.swp
 .DS_Store
 Thumbs.db
+*.code-workspace
+*.sublime-workspace
 
 # 7. Git-Altlasten und Readme aus Extensions
 **/.git
