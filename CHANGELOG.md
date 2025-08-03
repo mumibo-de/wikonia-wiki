@@ -1,5 +1,20 @@
 # Wikonia-Changelog
 
+## Version 0.10
+Status: interm stabil, nicht öffentlich
+Datum: 2025-08-02
+* Umsetzung zusätzliche Schutzstufen und Benutzergruppen [T105](https://phorge.wikonia.net/T105):
+ * Sensible Vorlagen und Module schützen, durch neue Schutzstufe `templateprotection`. [T106](https://phorge.wikonia.net/T106)
+  * Benutzergruppe `template-master` eingeführt und die entsprechenden Rechte zur Bearbeitung gewährt
+  * Recht zur Festlegung des Schutzstatus an Admins `sysop` übertragen.
+ * Rechtlich relevante inhalte der Ebtreibergesellschaft durch Schutzstufe `policyprotection` schützbar.  [T107](https://phorge.wikonia.net/T107)
+  * Benutzergruppe `policy-editor`eingeführt und die entsprechenden Rechte zur Bearbeitung gewährt.
+  * Recht zur Festlegeung des Schutzstatus an Bürkokraten `bureaucrats` übertragen.
+* Kleinere Änderungen udn Fixes:
+ * Korrektur von Schriebfehlern in den Lizenzkommentaren des MediaUploaders
+ * MediaUploader als Standard-Upload-Tool definiert.
+
+
 ## Version 0.9
 Status: intern stabil nicht öffentlich
 Datum: 2025-07-30
