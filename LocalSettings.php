@@ -229,6 +229,14 @@ wfLoadSkin( 'MinervaNeue' );
 wfLoadSkin( 'Timeless' );
 wfLoadSkin( 'Vector' );
 
+/** Vector-2022
+ * Diese Einstellungen sind spezifisch für den Vector-2022-Skin, der als HauptSkin im Wiki verwendet wird.
+ */
+  $wgDefaultUserOptions['vector-main-menu-pinned'] = 0;       // Standardmäßig ist das Hauptmenü im Vector-Skin nicht angeheftet. 
+  $wgDefaultUserOptions['vector-page-tools-pinned'] = 1;      // Standardmäßig ist das Seitenwerkzeugmenü im Vector-Skin angeheftet.  
+  $wgDefaultUserOptions['vector-toc-pinned'] = 0;             // Standardmäßig ist das Inhaltsverzeichnis im Vector-Skin nicht angeheftet.
+  $wgDefaultUserOptions['vector-appearance-pinned'] = 1;      // Standardmäßig ist das Erscheinungsbild-Menü im Vector-Skin angeheftet.
+ 
 
 
 /**
