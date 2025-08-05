@@ -190,6 +190,7 @@ $wgUpgradeKey = $mySecrets['UpgradeKey'];  // Ein Schlüssel, der für die Aktua
 $wgEnableUploads = true;  // Ermöglicht das Hochladen von Bildern und Dateien ins Wiki.
 $wgUseImageMagick = true;
 $wgImageMagickConvertCommand = "/usr/bin/convert";
+$wgFileExtensions = [ 'png', 'gif', 'jpg', 'jpeg', 'svg', 'webp', 'pdf' ]; // Erlaubte Dateiendungen für hochgeladene Dateien.
 
 $wgUseInstantCommons = true; // Ermöglicht die Verwendung von Bildern aus Wikimedia Commons, um Speicherplatz zu sparen und die Nutzung von Medien zu erleichtern.
 
@@ -297,7 +298,8 @@ wfLoadExtension( 'Popups' ); // Popups für Links zu anderen Seiten, um die Benu
 wfLoadExtension( 'PageImages' ); // Automatische Generierung von Seitenbildern für Artikel
 wfLoadExtension( 'HeaderTabs' ); // Registerkarten-Darstellung für die Navigation zwischen verschiedenen Seiten und Funktionen
 wfLoadExtension( 'NamespaceRelations' ); // Erweiterung für die Darstellung von Beziehungen zwischen Namensräumen
-wfLoadExtension( 'MediaUploader' );
+wfLoadExtension( 'MediaUploader' ); // MediaUploader-Erweiterung für das Hochladen von Mediendateien
+wfLoadExtension( 'CodeMirror' ); // CodeMirror-Integration für eine bessere Bearbeitungserfahrung im Quelltextmodus
 
 
 
@@ -320,6 +322,12 @@ $wgVisualEditorEnableToolbar = true; // Aktiviert die Werkzeugleiste im VisualEd
 $wgDefaultUserOptions['visualeditor-enable'] = 1; // Standardmäßig den VisualEditor aktivieren, wenn er verfügbar ist.
 $wgHiddenPrefs[] = 'visualeditor-enable'; // Keine Beta-Spielchen
 $wgVisualEditorUseSingleEditTab = true; // Aktiviert den einzelnen Bearbeiten-Tab für den VisualEditor, anstatt zwischen Quelltext und VisualEditor zu wechseln.
+
+/** CodeMirror
+ * Diese Einstellungen sind für die CodeMirror-Integration erforderlich,
+ * um eine bessere Bearbeitungserfahrung im Quelltextmodus zu bieten.
+ */
+$wgDefaultUserOptions[ 'usecodemirror' ] = true; // Standardmäßig CodeMirror aktivieren, wenn es verfügbar ist.
 
 /** Mobile Frontend
  * Diese Einstellungen sind für die mobile Ansicht des Wikis erforderlich,
