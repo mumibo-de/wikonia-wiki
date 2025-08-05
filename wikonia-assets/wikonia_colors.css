@@ -1,4 +1,5 @@
 :root {
+  --color-text: #424242;
   --color-primary: #08465a;
   --color-primary-light: #095067;
   --color-primary-dark: #063b4c;
@@ -41,10 +42,41 @@
   --color-projekt: #2e5e6e;
   --color-projekt-light: #346c7e;
   --color-projekt-dark: #274f5d;
+  --color-code-bg: #f8f8f8; /* oder z. B. #f4f4f4 für mehr Helligkeit */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
+/* Helle Hintergrundfarben für semantische Boxen */
+:root {
+  --bg-primary:         #e8f1f4;
+  --bg-secondary:       #fff3e0;
+  --bg-info:            #eef4f8;
+  --bg-success:         #e9f5ec;
+  --bg-warning:         #fff8e1;
+  --bg-error:           #fdecea;
+  --bg-notice:          #e7f1f5;
+  --bg-doku:            #e6eff6;
+  --bg-hilfe:           #e7f1f5;
+  --bg-wartung:         #f9f0e4;
+  --bg-informal:        #f0f0f0;
+  --bg-projekt:         #e4eef1;
+
+  /* Neutrale Hintergrundfarben */
+  --bg-neutral:         #f4f4f4;
+  --bg-neutral-light:   #f9f9f9;
+  --bg-neutral-dark:    #e0e0e0;
+
+  /* Harmonisierte Grundfarben für Text, Icons, Akzente */
+  --color-blue:         #2d6ca3;
+  --color-red:          #c0392b;
+  --color-green:        #27ae60;
+  --color-yellow:       #f1c40f;
+  --color-orange:       #e67e22;
+  --color-purple:       #8e44ad;
+  --color-gray:         #7f8c8d;
+}
+
+@media screen {
+  html.skin-theme-clientpref-night {
     --color-bg: #1a1a1a;
     --color-text: #eaeaea;
     --color-primary: #052d3a;
@@ -89,5 +121,41 @@
     --color-projekt: #1d3d47;
     --color-projekt-light: #214651;
     --color-projekt-dark: #18333c;
+    --color-code-bg: #222; /* etwas heller als der Standard-Darkmode-Hintergrund */
+  }
+}
+
+  /* ==========================================================================
+   Darkmode-Anpassung für erweiterte Farbvariablen
+   ========================================================================== */
+@media screen {
+  html.skin-theme-clientpref-night {
+    /* Helle Boxen → dezente Dunkelvarianten */
+    --bg-primary:         #132126;
+    --bg-secondary:       #2c2115;
+    --bg-info:            #1e2b32;
+    --bg-success:         #1d2f23;
+    --bg-warning:         #322916;
+    --bg-error:           #311d1d;
+    --bg-notice:          #1b2f37;
+    --bg-doku:            #1b2b35;
+    --bg-hilfe:           #1b2f37;
+    --bg-wartung:         #2e2418;
+    --bg-informal:        #2a2a2a;
+    --bg-projekt:         #1a262b;
+
+    /* Neutrale Flächen (z. B. Box-Hintergründe, Sektionen) */
+    --bg-neutral:         #2c2c2c;
+    --bg-neutral-light:   #353535;
+    --bg-neutral-dark:    #242424;
+
+    /* Harmonisierte Grundfarben (dunklere Entsprechungen) */
+    --color-blue:         #3b88c3;
+    --color-red:          #e74c3c;
+    --color-green:        #2ecc71;
+    --color-yellow:       #f39c12;
+    --color-orange:       #d35400;
+    --color-purple:       #9b59b6;
+    --color-gray:         #95a5a6;
   }
 }
