@@ -1,5 +1,12 @@
 # Wikonia-Changelog
 
+## Version 0.11
+Status: interm stabil, nicht öffentlich
+Datum: 2025-08-05
+* Standardeinstellungen für den Vector-Skin definiert, rechtsseitige Menüs eingeklappt. [T309](https://phorge.wikonia.net/T309)
+* Installation der Erweiterung `CodeMirror` als verbesserte Darstellungsweise für den Wiki-Editor. [T314](https://phorge.wikonia.net/T314)
+* Erlauben zusätzlicher Dateieindungen für den Upload
+
 ## Version 0.10
 Status: interm stabil, nicht öffentlich
 Datum: 2025-08-02

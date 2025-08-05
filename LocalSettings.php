@@ -7,7 +7,7 @@
  *   Sicherheits- und Konfigurationseinstellungen, die für den Betrieb des Wikis
  *  erforderlich sind.
  * Produktivversion ab 2025-08-02
- * Git-Tag: v0.10
+ * Tags: wk v.011-pre [Phorge] // v0.11 [GitHub]
  */
 
 
